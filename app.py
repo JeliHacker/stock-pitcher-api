@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, abort
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 import click
@@ -108,6 +108,31 @@ def create_app():
                 'baggers': stock.baggers,
             })
         return jsonify(stocks_data)
+
+    @app.route('/stocks/<string:ticker>')
+    def get_stock(ticker):
+        stock = Stock.query.filter_by(symbol=ticker.upper()).first()
+        if stock:
+            return jsonify({
+                'symbol': stock.symbol,
+                'name': stock.name,
+                'last_sale': stock.last_sale,
+                'net_change': stock.net_change,
+                'percent_change': stock.percent_change,
+                'market_cap': stock.market_cap,
+                'country': stock.country,
+                'ipo_year': stock.ipo_year,
+                'volume': stock.volume,
+                'sector': stock.sector,
+                'industry': stock.industry,
+                'margin_of_safety': stock.margin_of_safety,
+                'business_predictability': stock.business_predictability,
+                'fair_value': stock.fair_value,
+                'fair_value_minus_price': stock.fair_value_minus_price,
+                'baggers': stock.baggers
+            })
+        else:
+            abort(404)  # Not found if there's no stock with the given symbol
 
     @app.cli.command('import-data')
     @click.argument('csv_file')

@@ -86,7 +86,7 @@ def create_app():
 
     @app.route('/stocks')
     def get_stocks():
-        stocks = Stock.query.limit(10).all()  # Fetch first 10 stocks
+        stocks = Stock.query.limit(50).all()  # Fetch first 50 stocks
         stocks_data = []
         for stock in stocks:
             stocks_data.append({

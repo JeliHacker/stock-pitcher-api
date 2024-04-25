@@ -83,7 +83,8 @@ def create_app():
     @app.route('/')
     def hello_world():
         return jsonify({'message': 'Welcome to the Stock Pitcher API!'
-                                   ' I created this API to use in my Stock Pitcher mobile app.'})
+                                   ' I created this API to use in my Stock Pitcher mobile app.'
+                                   ' It delivers stock data that comes from the Nasdaq website and Gurufocus.'})
 
     @app.route('/stocks')
     def get_stocks():

@@ -12,21 +12,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.5.3
+    - name: Execute SSH commands
+      uses: appleboy/ssh-action@master
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-    - name: SSH and Deploy
-      run: |
-        ssh -o StrictHostKeyChecking=no -l mynewuser 162.0.225.140 << 'EOF'
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.VPS_PASSWORD }}
+        script: |
           cd /stockpitcherapi
           git pull
-          # Assuming you use a virtual environment
           source venv/bin/activate
-          # Install any dependencies (if you use a requirements.txt file)
           pip install -r requirements.txt
-          # Restart Gunicorn
           sudo systemctl restart stockpitcher.service
-        EOF
-

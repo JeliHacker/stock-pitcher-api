@@ -1,1 +1,3 @@
-# stock-pitcher-api
+# Stock Pitcher API
+
+This API is for the Stock Pitcher mobile app. 

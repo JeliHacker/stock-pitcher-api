@@ -1,8 +1,18 @@
-from flask import Flask, jsonify, abort
+from flask import Flask, request, jsonify, abort
 from flask_sqlalchemy import SQLAlchemy
 import pandas as pd
 import click
 from flask.cli import with_appcontext
+import sqlite3
+
+
+def clean_currency(value):
+    """Remove dollar signs and commas and convert to float, handle both strings and floats."""
+    if isinstance(value, float):  # If it's already a float, return it as is
+        return value
+    if isinstance(value, str):  # If it's a string, clean it up
+        return float(value.replace('$', '').replace(',', ''))
+    raise ValueError(f"Unexpected data type: {type(value)}")
 
 
 def safe_float(value, default=None):
@@ -28,11 +38,11 @@ class Stock(db.Model):
     volume = db.Column(db.Integer)
     sector = db.Column(db.String(50))
     industry = db.Column(db.String(100))
-    margin_of_safety = db.Column(db.Float)  # Assuming this is a percentage or float value
-    business_predictability = db.Column(db.Integer)  # Assuming predictability is rated on an integer scale
-    fair_value = db.Column(db.String(50))  # Storing as string due to potential currency symbols, but could be Float
-    fair_value_minus_price = db.Column(db.Float)  # Assuming this is calculated as a float value
-    baggers = db.Column(db.String(20))  # Assuming this might contain percentage symbols or other non-numeric characters
+    margin_of_safety = db.Column(db.Float)
+    business_predictability = db.Column(db.Integer)  # Business Predictability is on a scale of 1-5
+    fair_value = db.Column(db.Float)  # Storing as string due to potential currency symbols, but could be Float
+    fair_value_minus_price = db.Column(db.Float)
+    baggers = db.Column(db.Float)  # Baggers is fair_value_minus_price divided by price
 
     def __repr__(self):
         return f'<Stock {self.symbol}>'
@@ -62,12 +72,19 @@ def import_stock_data(csv_file_path):
             margin_of_safety=safe_float(row['Margin of Safety']),
             business_predictability=row['Business Predictability'] if pd.notnull(
                 row['Business Predictability']) else None,
-            fair_value=row['Fair Value'] if pd.notnull(row['Fair Value']) else None,
+            fair_value=clean_currency(row['Fair Value']) if pd.notnull(row['Fair Value']) else None,
             fair_value_minus_price=safe_float(row['Fair Value - Price']),
-            baggers=row['Baggers'] if pd.notnull(row['Baggers']) else None
+            baggers=clean_currency(row['Baggers']) if pd.notnull(row['Baggers']) else None
         )
         db.session.add(stock)
     db.session.commit()
+
+
+def get_db_connection():
+    # Connection setup to your SQLite database
+    conn = sqlite3.connect('instance/stocks.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 
 def create_app():
@@ -88,28 +105,18 @@ def create_app():
 
     @app.route('/stocks')
     def get_stocks():
-        stocks = Stock.query.limit(50).all()  # Fetch first 50 stocks
-        stocks_data = []
-        for stock in stocks:
-            stocks_data.append({
-                'symbol': stock.symbol,
-                'name': stock.name,
-                'last_sale': stock.last_sale,
-                'net_change': stock.net_change,
-                'percent_change': stock.percent_change,
-                'market_cap': stock.market_cap,
-                'country': stock.country,
-                'ipo_year': stock.ipo_year,
-                'volume': stock.volume,
-                'sector': stock.sector,
-                'industry': stock.industry,
-                'margin_of_safety': stock.margin_of_safety,
-                'business_predictability': stock.business_predictability,
-                'fair_value': stock.fair_value,
-                'fair_value_minus_price': stock.fair_value_minus_price,
-                'baggers': stock.baggers,
-            })
-        return jsonify(stocks_data)
+        page = request.args.get('page', default=1, type=int)
+        limit = request.args.get('limit', default=50, type=int)
+        offset = (page - 1) * limit
+
+        # Assuming you have a database connection function
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM stock ORDER BY baggers DESC LIMIT ? OFFSET ?', (limit, offset))
+        stocks = cursor.fetchall()
+        conn.close()
+
+        return jsonify([dict(stock) for stock in stocks])
 
     @app.route('/stocks/<string:ticker>')
     def get_stock(ticker):

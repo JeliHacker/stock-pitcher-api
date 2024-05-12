@@ -10,6 +10,6 @@ def xlsx_to_csv(xlsx_file_path, csv_file_path):
 
 
 # Example usage
-xlsx_file_path = 'all_stocks_data.xlsx'
-csv_file_path = 'all_stocks_data.csv'
-xlsx_to_csv(xlsx_file_path, csv_file_path)
+xlsx_file = 'all_stocks_data.xlsx'
+csv_file = 'all_stocks_data.csv'
+xlsx_to_csv(xlsx_file, csv_file)

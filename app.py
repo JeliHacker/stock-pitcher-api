@@ -4,6 +4,15 @@ import pandas as pd
 import click
 from flask.cli import with_appcontext
 import sqlite3
+from celery import Celery
+from redis import Redis
+
+
+def make_celery(app_input):
+    celery_component = Celery(app_input.import_name, broker=app_input.config['CELERY_broker_url'])
+    celery_component.conf.update(app_input.config)
+    celery_component.autodiscover_tasks(force=True)
+    return celery_component
 
 
 def clean_currency(value):
@@ -91,6 +100,8 @@ def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///stocks.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['CELERY_broker_url'] = 'redis://localhost:6379/0'
+    app.config['result_backend'] = 'redis://localhost:6379/0'
 
     db.init_app(app)
 
@@ -143,6 +154,11 @@ def create_app():
         else:
             abort(404)  # Not found if there's no stock with the given symbol
 
+    @app.route('/add/<int:a>/<int:b>')
+    def add(a, b):
+        task = add_together.delay(a, b)
+        return str(task.get(timeout=30))  # Using timeout to simulate waiting for result
+
     @app.cli.command('import-data')
     @click.argument('csv_file')
     @with_appcontext
@@ -155,6 +171,13 @@ def create_app():
 
 
 app = create_app()
+
+celery = make_celery(app)
+
+
+@celery.task(name='add_together')
+def add_together(a, b):
+    return a + b
 
 
 if __name__ == '__main__':

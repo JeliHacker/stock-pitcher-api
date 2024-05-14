@@ -6,6 +6,7 @@ from flask.cli import with_appcontext
 import sqlite3
 from celery import Celery
 from redis import Redis
+from scraper.main import main as scraper_main
 
 
 def make_celery(app_input):
@@ -166,6 +167,11 @@ def create_app():
         """Imports stock data from a CSV file."""
         import_stock_data(csv_file)
         click.echo(f'Data imported from {csv_file}')
+
+    @app.route('/update_stocks')
+    def update_stocks():
+        scraper_main()
+        return "Stock data updated!"
 
     return app
 

@@ -5,7 +5,6 @@ import click
 from flask.cli import with_appcontext
 import sqlite3
 from celery import Celery
-from redis import Redis
 from scraper.main import main as scraper_main
 
 

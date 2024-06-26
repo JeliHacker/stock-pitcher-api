@@ -5,20 +5,31 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import TimeoutException, WebDriverException
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
 import time
+import requests
+import logging
 
 
 def create_driver():
+    options = Options()
+    options.add_argument('--headless=new')
+
+    # https://stackoverflow.com/questions/47316810/unable-to-locate-elements-on-webpage-with-headless-chrome
+    user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
+    options.add_argument(f'user-agent={user_agent}')
+
     service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
+    driver = webdriver.Chrome(service=service, options=options)
     return driver
 
 
 def scrape_data(driver, ticker: str):
     """
+    This scrapes data for each row.
     :param driver: the selenium webdriver
     :param ticker: the company's ticker symbol
     :return: a list [margin of safety, fair value, predictability stars]
@@ -27,9 +38,8 @@ def scrape_data(driver, ticker: str):
 
     # Wait for the page to load sufficiently
     try:
-        print(f"trying... {ticker}")
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'dcf-result')))
-        print("done waiting, got past webdriverwait")
+
     except TimeoutException:
         print(f"Timed out waiting for the page for {ticker} to load.")
         # Optionally, take a screenshot or dump the page source to help with debugging.
@@ -46,7 +56,7 @@ def scrape_data(driver, ticker: str):
     # Implement a retry mechanism for BeautifulSoup
     attempts = 0
     timed_out = True
-    while attempts < 3:
+    while attempts < 4:
         attempts += 1
         try:
             soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -58,6 +68,10 @@ def scrape_data(driver, ticker: str):
             time.sleep(5)  # Wait a bit before restarting
             driver = create_driver()  # Create a new driver instance
             continue
+
+        if attempts > 1:
+            print("Couldn't find margin of safety on first attempt. Trying again, slower this time")
+            time.sleep(5)
 
         result_span = soup.find('span', class_='dcf-result')
 
@@ -103,16 +117,16 @@ def scrape_data(driver, ticker: str):
     return [percentage_value, predictability_stars, fair_value]
 
 
-def scrape_all_stocks(input_file):
+def scrape_all_stocks(input_file) -> bool:
     """
     Writes to the stocks list (which is the input file), adding 3 columns relating to fair value,
     based on data scraped from Gurufocus.
-    :param input_file: What file to read and write. This should be the relevant stocks list.
-    :return:
+    :param input_file: Which file to read and write. This should be the relevant stocks list.
+    :return: boolean
     """
 
     # Load the DataFrame
-    df = pd.read_excel(input_file, sheet_name='Stocks')
+    df = pd.read_excel(f"{input_file}", sheet_name='Stocks')
     # Ensure the DataFrame has the necessary columns
     if 'Margin of Safety' not in df.columns:
         df['Margin of Safety'] = None
@@ -121,10 +135,15 @@ def scrape_all_stocks(input_file):
     if 'Fair Value' not in df.columns:
         df['Fair Value'] = None
 
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
+    try:
+        driver = create_driver()
+    except requests.exceptions.ReadTimeout as e:
+        logging.error(f"ReadTimeout error: {e}")
+        print("Getting a ReadTimeout error")
+        raise
 
     processed_count = 0
+    finished = True
     try:
         df['Symbol'] = df['Symbol'].str.replace('/', '.', regex=False)
         df['Symbol'] = df['Symbol'].str.replace('^', '.', regex=False)
@@ -135,7 +154,7 @@ def scrape_all_stocks(input_file):
                 continue
 
             data = scrape_data(driver, row['Symbol'])
-            print(data)
+            print(f"{row['Symbol']}: {data}, stocks processed: {processed_count}")
             if data:
                 mos = data[0]
                 if mos == 'N/A':
@@ -156,12 +175,13 @@ def scrape_all_stocks(input_file):
             processed_count += 1
 
             if processed_count >= 50:
+                finished = False
                 break
     finally:
         driver.quit()
-
-        df.to_excel(input_file, sheet_name='Stocks', index=False)
+        df.to_excel(f"{input_file}", sheet_name='Stocks', index=False)
+        return finished
 
 
 if __name__ == "__main__":
-    scrape_all_stocks()
+    print("scrape_all_stocks.py")

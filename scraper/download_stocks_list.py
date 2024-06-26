@@ -18,6 +18,7 @@ def download_nasdaq_list(filename: str):
     driver = create_driver()
     driver.get("https://www.nasdaq.com/market-activity/stocks/screener")
     time.sleep(5)
+    driver.get_screenshot_as_file("screenshot.png")
     download_button = driver.find_element(By.CLASS_NAME, 'nasdaq-screener__form-button--download')
     download_button.click()
     time.sleep(5)
@@ -40,4 +41,5 @@ def download_nasdaq_list(filename: str):
     df = pd.read_csv(f"{filename}.csv")
 
     excel_file_path = f"{filename}.xlsx"
+    print(f"excel_file_path = {excel_file_path}")
     df.to_excel(excel_file_path, index=False, engine="openpyxl", sheet_name="Stocks")

@@ -1,6 +1,10 @@
 from scraper.download_stocks_list import download_nasdaq_list
 from scraper.scrape_all_stocks import scrape_all_stocks
 import datetime
+import os
+import requests
+import time
+import logging
 
 
 def main():
@@ -8,8 +12,26 @@ def main():
     current_date = datetime.datetime.now().strftime("%m_%d_%Y")  # Formats date as MM_DD_YYYY
     master_filename = f"stocks_list_{current_date}" # e.g. stocks_list_05_12_2024
 
-    download_nasdaq_list(master_filename)
-    scrape_all_stocks(f"{master_filename}.xlsx")
+    if not os.path.exists(f"../{master_filename}.xlsx"):
+        download_nasdaq_list(master_filename)
+
+    done = False
+    count = 0
+    attempt = 0
+    max_retries = 3
+    while not done and attempt < max_retries:
+        print("NOT DONE! count:", count)
+        try:
+            done = scrape_all_stocks(f"{master_filename}.xlsx")
+            attempt = 0
+        except requests.exceptions.ReadTimeout:
+            logging.warning(f"Retrying in 5 seconds...")
+            time.sleep(5)
+            attempt += 1
+
+        count += 1
+
+    print(done)
 
 
 if __name__ == "__main__":

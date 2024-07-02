@@ -8,3 +8,4 @@ If one key doesn't return anything, try the other one.
 Capital Expenditures: PaymentsToAcquirePropertyPlantAndEquipment, PaymentsForCapitalImprovements
 cash flow from operations: NetCashProvidedByUsedInOperatingActivities, NetCashProvidedByUsedInOperatingActivitiesContinuingOperations, 
 LongTermDebt: LongTermDebt, LongTermDebtNoncurrent
+Revenue: RevenueFromContractWithCustomerExcludingAssessedTax

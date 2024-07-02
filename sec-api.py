@@ -129,14 +129,14 @@ def main(cik: str = None):
     plt.figure(figsize=(12, 8))
 
     # Plot cash flow from operations
-    plt.plot(fiscal_periods_cf, cash_flow_values, marker='o', linestyle='-', color='b',
-             label='Cash Flow from Operations')
-
-    # Plot capital expenditures
-    plt.plot(fiscal_periods_capex, capex_values, marker='o', linestyle='-', color='r', label='Capital Expenditures')
+    # plt.plot(fiscal_periods_cf, cash_flow_values, marker='o', linestyle='-', color='b',
+    #          label='Cash Flow from Operations')
+    #
+    # # Plot capital expenditures
+    # plt.plot(fiscal_periods_capex, capex_values, marker='o', linestyle='-', color='r', label='Capital Expenditures')
 
     # Plot acquisitions
-    plt.plot(fiscal_periods_acq, acq_values, marker='o', linestyle='-', color='g', label='Acquisitions')
+    plt.plot(fiscal_periods_acq, acq_values, marker='o', linestyle='-', color='g', label='Long-term Debt')
 
     plt.title('Financial Data for AMC Networks Inc. (10-K)')
     plt.xlabel('Fiscal Period')
@@ -149,4 +149,4 @@ def main(cik: str = None):
     plt.show()
 
 
-main("1609711".zfill(10))
+main("1514991".zfill(10))

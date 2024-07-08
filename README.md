@@ -7,5 +7,5 @@ The same category on two different annual reports may have different dictionary 
 If one key doesn't return anything, try the other one.
 Capital Expenditures: PaymentsToAcquirePropertyPlantAndEquipment, PaymentsForCapitalImprovements
 cash flow from operations: NetCashProvidedByUsedInOperatingActivities, NetCashProvidedByUsedInOperatingActivitiesContinuingOperations, 
-LongTermDebt: LongTermDebt, LongTermDebtNoncurrent
+LongTermDebt: LongTermDebt, LongTermDebtNoncurrent, LongTermDebtAndCapitalLeaseObligations
 Revenue: RevenueFromContractWithCustomerExcludingAssessedTax

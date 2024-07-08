@@ -1,21 +1,21 @@
 import requests
 import pandas as pd
 from sec_api import HEADERS, get_cik_from_symbol
+from my_parse_345 import parse_345
+import time
 
 
 # Define the function to get insider transactions
 def get_insider_transactions(cik):
     url = f'https://data.sec.gov/submissions/CIK{cik}.json'
     response = requests.get(url, headers=HEADERS)
-    print(response.status_code)
     data = response.json()
 
     # Filter for Forms 3, 4, and 5
     insider_forms = []
 
     for i in range(len(data['filings']['recent']['form'])):
-        if data['filings']['recent']['form'][i] in ['3', '4', '5']:
-            print(i, data['filings']['recent']['form'][i], data['filings']['recent']['reportDate'][i])
+        if data['filings']['recent']['form'][i] in ['4']: # look for specific form types
             current_filing = {}
             for key in data['filings']['recent'].keys():
                 current_filing[key] = data['filings']['recent'][key][i]
@@ -26,16 +26,22 @@ def get_insider_transactions(cik):
             file.writelines(f"{form}\n")
 
     transactions = []
-    for form in insider_forms[:5]:
+    for form in insider_forms:
         filing_url = f'https://www.sec.gov/Archives/edgar/data/{cik}/{form["accessionNumber"].replace("-", "")}/{form["primaryDocument"]}'
 
-        filing_response = requests.get(filing_url, headers=HEADERS)
-        print('filing_url', filing_url, filing_response)
-        transactions.append({
-            'form': form['form'],
-            'filing_date': form['filingDate'],
-            'document_url': filing_url
-        })
+        filer = parse_345(filing_url)
+        time.sleep(1)
+        # print("--------------------PARSING---------------------")
+        # print("filer", filer)
+        if "bracken" in filer.lower():
+            print("--------------------PARSING---------------------")
+            print(filing_url)
+            filing_response = requests.get(filing_url, headers=HEADERS)
+            transactions.append({
+                'form': form['form'],
+                'filing_date': form['filingDate'],
+                'document_url': filing_url
+            })
 
     return pd.DataFrame(transactions)
 

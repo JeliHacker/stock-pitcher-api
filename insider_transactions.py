@@ -3,12 +3,16 @@ import pandas as pd
 from sec_api import HEADERS, get_cik_from_symbol
 from my_parse_345 import parse_345
 import time
+from datetime import datetime
 
 
 # Define the function to get insider transactions
 def get_insider_transactions(cik):
     url = f'https://data.sec.gov/submissions/CIK{cik}.json'
     response = requests.get(url, headers=HEADERS)
+    if response.status_code != 200:
+        print("response failed with code:", response.status_code)
+        print("cik:", cik)
     data = response.json()
 
     # Filter for Forms 3, 4, and 5
@@ -21,27 +25,22 @@ def get_insider_transactions(cik):
                 current_filing[key] = data['filings']['recent'][key][i]
             insider_forms.append(current_filing)
 
-    with open('dict.txt', 'w') as file:
-        for form in insider_forms:
-            file.writelines(f"{form}\n")
-
     transactions = []
     for form in insider_forms:
         filing_url = f'https://www.sec.gov/Archives/edgar/data/{cik}/{form["accessionNumber"].replace("-", "")}/{form["primaryDocument"]}'
 
-        filer = parse_345(filing_url)
-        time.sleep(1)
-        # print("--------------------PARSING---------------------")
-        # print("filer", filer)
-        if "bracken" in filer.lower():
-            print("--------------------PARSING---------------------")
-            print(filing_url)
-            filing_response = requests.get(filing_url, headers=HEADERS)
-            transactions.append({
-                'form': form['form'],
-                'filing_date': form['filingDate'],
-                'document_url': filing_url
-            })
+        if datetime.strptime(form['filingDate'], '%Y-%m-%d') < datetime.strptime('2020-01-01', '%Y-%m-%d'):
+            break
+
+        filer = parse_345(filing_url, form['filingDate'])
+        time.sleep(0.11)
+        # print("-- PARSING -- ")
+
+        transactions.append({
+            'form': form['form'],
+            'filing_date': form['filingDate'],
+            'document_url': filing_url
+        })
 
     return pd.DataFrame(transactions)
 
@@ -56,8 +55,8 @@ def analyze_transactions(df):
 
 # Main function to run the script
 if __name__ == "__main__":
-    cik = get_cik_from_symbol('all_tickers.txt', 'VFC', add_zeroes=True)  # Example CIK for Apple Inc.
+    cik = get_cik_from_symbol('VFC', add_zeroes=True)
     transactions_df = get_insider_transactions(cik)
-    analyzed_df = analyze_transactions(transactions_df)
+    # analyzed_df = analyze_transactions(transactions_df)
 
-    print(analyzed_df)
+    # print(analyzed_df)

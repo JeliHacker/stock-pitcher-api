@@ -20,7 +20,10 @@ def clean_currency(value):
     if isinstance(value, float):  # If it's already a float, return it as is
         return value
     if isinstance(value, str):  # If it's a string, clean it up
-        return float(value.replace('$', '').replace(',', ''))
+        value = value.replace('$', '').replace(',', '')
+        if not value or value.strip() == "":
+            return float(0)
+        return float(value)
     raise ValueError(f"Unexpected data type: {type(value)}")
 
 
@@ -69,7 +72,7 @@ def import_stock_data(csv_file_path):
         stock = Stock(
             symbol=row['Symbol'],
             name=row['Name'],
-            last_sale=safe_float(row['Last Sale']),
+            last_sale=clean_currency(row['Last Sale']),
             net_change=safe_float(row['Net Change']),
             percent_change=row['% Change'],
             market_cap=row['Market Cap'],
@@ -78,12 +81,15 @@ def import_stock_data(csv_file_path):
             volume=row['Volume'],
             sector=row['Sector'] if 'Sector' in row and pd.notnull(row['Sector']) else '',
             industry=row['Industry'] if 'Industry' in row and pd.notnull(row['Industry']) else '',
-            margin_of_safety=safe_float(row['Margin of Safety']),
+            margin_of_safety=safe_float(row['Margin of Safety']) if 'Margin of Safety' in row
+                                                                    and pd.notnull(row['Margin of Safety']) else 0,
             business_predictability=row['Business Predictability'] if pd.notnull(
                 row['Business Predictability']) else None,
             fair_value=clean_currency(row['Fair Value']) if pd.notnull(row['Fair Value']) else None,
-            fair_value_minus_price=safe_float(row['Fair Value - Price']),
-            baggers=clean_currency(row['Baggers']) if pd.notnull(row['Baggers']) else None
+            fair_value_minus_price=safe_float(row['Fair Value - Price']) if 'Fair Value - Price' in row
+                                                                            and pd.notnull(row['Fair Value - Price']) else 0,
+            baggers=clean_currency(row['Baggers']) if 'Baggers' in row
+                                                      and pd.notnull(row['Baggers']) else None
         )
         db.session.add(stock)
     db.session.commit()
@@ -169,6 +175,7 @@ def create_app():
 
     @app.route('/update_stocks')
     def update_stocks():
+        """initiate the scraper to re-get stock data"""
         scraper_main()
         return "Stock data updated!"
 

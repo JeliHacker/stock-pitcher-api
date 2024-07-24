@@ -23,4 +23,6 @@ jobs:
           git pull
           source venv/bin/activate
           pip install -r requirements.txt
+          rm -rf instance/stocks.db
+          flask import-data all_stocks_data.csv
           echo ${{ secrets.VPS_PASSWORD }} | sudo -S sudo systemctl restart stockpitcher.service

@@ -9,3 +9,12 @@ Capital Expenditures: PaymentsToAcquirePropertyPlantAndEquipment, PaymentsForCap
 cash flow from operations: NetCashProvidedByUsedInOperatingActivities, NetCashProvidedByUsedInOperatingActivitiesContinuingOperations, 
 LongTermDebt: LongTermDebt, LongTermDebtNoncurrent, LongTermDebtAndCapitalLeaseObligations
 Revenue: RevenueFromContractWithCustomerExcludingAssessedTax
+
+### Personal Notes
+To update the SQLite database (stocks.db) run `flask import-data all_stocks_data.csv`. 
+Note that the .csv file needs to be created by the DCF scraping function. You can use the `xlsx_to_csv` function helper here.  
+
+### Ideas
+
+You can get short interest data from the Nasdaq at pages like this:
+https://www.nasdaq.com/market-activity/stocks/pcb/short-interest

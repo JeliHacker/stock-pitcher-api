@@ -10,18 +10,46 @@ SEC Filing Scraper
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
+import bs4
 
 # create request header
 HEADERS = {'User-Agent': "eli@stockpitcher.app"}
 
 
-def get_cik_from_symbol(file_path, stock_symbol):
-    with open(file_path, 'r') as file:
+def get_cik_from_symbol(stock_symbol, add_zeroes: bool = False):
+    with open("all_tickers.txt", 'r') as file:
         for line in file:
             parts = line.strip().split(', ')
-            if len(parts) == 4 and parts[1] == stock_symbol:
-                return parts[2]
+            if len(parts) >= 4 and parts[1] == stock_symbol:
+                if add_zeroes:
+                    return parts[2].zfill(10)
+                else:
+                    return parts[2]
+    print("Error in get_cik_from_symbol")
     return None
+
+
+def get_symbol_from_cik(cik):
+    # Path to your CSV file
+    csv_file_path = 'all_tickers.csv'
+
+    # Read the CSV file. Assuming there are no headers and columns are: index, ticker, CIK, company name
+    # pandas gets made because some of the lines have too many commas,
+    # i.e. "10226,BFLY-WT,1804176,Butterfly Network, Inc."
+    # but it doesn't matter for our purposes here because we just care about the CIK and the ticker
+    df = pd.read_csv(csv_file_path, header=None, on_bad_lines='skip')
+
+    # Rename columns for clarity
+    df.columns = ['index', 'ticker', 'cik', 'company_name']
+
+    # Search for the row where the CIK matches
+    matched_row = df[df['cik'] == int(cik)]  # Convert cik to int because pandas might interpret it as int
+
+    # Check if a match was found
+    if not matched_row.empty:
+        return matched_row.iloc[0]['ticker']  # Return the ticker of the first matching row
+    else:
+        return None  # Return None if no match is found
 
 
 def get_all_tickers():
@@ -37,27 +65,39 @@ def get_all_tickers():
             file.write(f"{key},{curr['ticker']},{curr['cik_str']},{curr['title']}\n")
 
 
+def get_sp500_stocks():
+    """This function returns a list of the current S&P 500 stock tickers,
+    in alphabetical order."""
+    url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+    response = requests.get(url)
+    soup = bs4.BeautifulSoup(response.text, 'html.parser')
+    table = soup.find('table', {'class': 'wikitable sortable'})
+
+    # Iterate through the rows in the table and get data
+    data = []
+    rows = table.find_all('tr')
+    for row in rows[1:]:  # Skip header row
+        cols = row.find_all('td')
+        if len(cols) > 1:  # If row isn't empty
+            symbol = cols[0].text.strip()
+            name = cols[1].text.strip()
+            data.append({'Symbol': symbol, 'Security': name})
+
+    return data
+
+
+def get_filtered_values(data, key):
+    print("get_filtered_values", key)
+    if key in data['facts']['us-gaap']:
+        try:
+            values = data['facts']['us-gaap'][key]['units']['USD']
+        except KeyError:
+            return []
+        return [entry for entry in values if entry.get('form') == '10-K']
+    return []
+
+
 def main(cik: str = None, ticker: str = None):
-    print("main")
-
-    # get all companies data
-    companyTickers = requests.get(
-        "https://www.sec.gov/files/company_tickers.json",
-        headers=HEADERS
-    ).json()
-
-    # dictionary to dataframe
-    companyData = pd.DataFrame.from_dict(companyTickers,
-                                         orient='index')
-
-    # add leading zeros to CIK
-    companyData['cik_str'] = companyData['cik_str'].astype(
-                               str).str.zfill(10)
-
-    if not cik:
-        cik = companyData.iloc[2833]['cik_str']
-
-    print("cik =", cik, type(cik))
     # get company facts data
     company_facts = requests.get(
         f'https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json',
@@ -88,13 +128,6 @@ def main(cik: str = None, ticker: str = None):
     # return
 
     # Function to extract and filter data by form type (10-K)
-    def get_filtered_values(data, key):
-        if key in data['facts']['us-gaap']:
-            values = data['facts']['us-gaap'][key]['units']['USD']
-            print(values)
-            print([entry for entry in values if entry.get('form') == '10-K'])
-            return [entry for entry in values if entry.get('form') == '10-K']
-        return []
 
     net_income_10k = get_filtered_values(company_facts, 'NetIncomeLoss')
     print("net_income_10k", net_income_10k)
@@ -102,16 +135,16 @@ def main(cik: str = None, ticker: str = None):
     cash_flow_operations_10k = get_filtered_values(company_facts, 'NetCashProvidedByUsedInOperatingActivities')
 
     # Get capital expenditures
-    capital_expenditures_10k = get_filtered_values(company_facts, 'PaymentsForCapitalImprovements')
+    capital_expenditures_10k = get_filtered_values(company_facts, 'PaymentsToAcquirePropertyPlantAndEquipment')
 
     # Get acquisitions
     acquisitions_10k = get_filtered_values(company_facts, 'PaymentsToAcquireBusinessesNetOfCashAcquired')
 
-    long_term_debt_10k = get_filtered_values(company_facts, 'LongTermDebt')
+    long_term_debt_10k = get_filtered_values(company_facts, 'LongTermDebtNoncurrent')
 
     # Extract fiscal periods and values for each category
     def extract_periods_and_values(data, key=None):
-        periods = [entry['end'] for entry in data if 'frame' in entry and len(entry['frame']) == 6]
+        periods = [entry['end'] for entry in data if 'frame' in entry and len(entry['frame']) == 6] # len() == 6 fixes bug with net income
         values = [entry['val'] for entry in data if 'frame' in entry and len(entry['frame']) == 6]
         if key == 'net income':
             print("net income entries with frames below")
@@ -172,6 +205,9 @@ def main(cik: str = None, ticker: str = None):
 
     plt.show()
 
-TICKER = 'VFC'
-cik = get_cik_from_symbol('all_tickers.txt', TICKER)
-main(cik.zfill(10), ticker=TICKER)
+
+if __name__ == "__main__":
+    # TICKER = 'CCRN'
+    # cik_value = get_cik_from_symbol(TICKER, add_zeroes=True)
+    # main(cik_value, ticker=TICKER)
+    print(get_sp500_stocks())

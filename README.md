@@ -4,11 +4,11 @@ This API is for the Stock Pitcher mobile app. It hosts data I've scraped from th
 
 ### Notes for the SEC API
 The same category on two different annual reports may have different dictionary keys in the API. 
-If one key doesn't return anything, try the other one.
-Capital Expenditures: PaymentsToAcquirePropertyPlantAndEquipment, PaymentsForCapitalImprovements
-cash flow from operations: NetCashProvidedByUsedInOperatingActivities, NetCashProvidedByUsedInOperatingActivitiesContinuingOperations, 
-LongTermDebt: LongTermDebt, LongTermDebtNoncurrent, LongTermDebtAndCapitalLeaseObligations
-Revenue: RevenueFromContractWithCustomerExcludingAssessedTax
+If one key doesn't return anything, try the other one.\
+<ins>**Capital Expenditures**</ins>: PaymentsToAcquirePropertyPlantAndEquipment, PaymentsForCapitalImprovements\
+<ins>**Cash Flow from Operations**</ins>: NetCashProvidedByUsedInOperatingActivities, NetCashProvidedByUsedInOperatingActivitiesContinuingOperations,\
+<ins>**LongTermDebt**</ins>: LongTermDebt, LongTermDebtNoncurrent, LongTermDebtAndCapitalLeaseObligations\
+<ins>**Revenue**</ins>: RevenueFromContractWithCustomerExcludingAssessedTax
 
 ### Personal Notes
 To update the SQLite database (stocks.db) run `flask import-data all_stocks_data.csv`. 
@@ -16,5 +16,5 @@ Note that the .csv file needs to be created by the DCF scraping function. You ca
 
 ### Ideas
 
-You can get short interest data from the Nasdaq at pages like this:
+You can get short interest data from the Nasdaq at pages like this:\
 https://www.nasdaq.com/market-activity/stocks/pcb/short-interest

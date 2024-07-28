@@ -1,0 +1,25 @@
+column 0: Common Stock
+
+column 1: 09/28/2023
+
+column 2: 
+
+column 3: P
+
+column 4: 
+
+column 5: 2.59
+
+column 6: A
+
+column 7: $111.09
+
+column 8: 24,221.5201
+
+column 9: D
+
+column 10: 
+
+amount_before_transaction: 24218.9301
+percent_increase_in_shares: 0.010694114022816167
+money_invested: 287.7231

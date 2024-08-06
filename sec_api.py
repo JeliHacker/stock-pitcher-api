@@ -11,6 +11,8 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 import bs4
+import os
+from helpers import convert_csv_to_txt
 
 # create request header
 HEADERS = {'User-Agent': "eli@stockpitcher.app"}
@@ -25,31 +27,20 @@ def get_cik_from_symbol(stock_symbol, add_zeroes: bool = False):
                     return parts[2].zfill(10)
                 else:
                     return parts[2]
-    print("Error in get_cik_from_symbol")
+    print("Error in get_cik_from_symbol. Could not find a CIK for that stock ticker.")
     return None
 
 
-def get_symbol_from_cik(cik):
-    # Path to your CSV file
-    csv_file_path = 'all_tickers.csv'
+def get_symbol_from_cik(cik, csv_file_path='all_tickers.csv'):
+    cik = str(cik).lstrip("0")
 
-    # Read the CSV file. Assuming there are no headers and columns are: index, ticker, CIK, company name
-    # pandas gets made because some of the lines have too many commas,
-    # i.e. "10226,BFLY-WT,1804176,Butterfly Network, Inc."
-    # but it doesn't matter for our purposes here because we just care about the CIK and the ticker
-    df = pd.read_csv(csv_file_path, header=None, on_bad_lines='skip')
-
-    # Rename columns for clarity
-    df.columns = ['index', 'ticker', 'cik', 'company_name']
-
-    # Search for the row where the CIK matches
-    matched_row = df[df['cik'] == int(cik)]  # Convert cik to int because pandas might interpret it as int
-
-    # Check if a match was found
-    if not matched_row.empty:
-        return matched_row.iloc[0]['ticker']  # Return the ticker of the first matching row
-    else:
-        return None  # Return None if no match is found
+    with open("all_tickers.txt", 'r') as file:
+        for line in file:
+            parts = line.strip().split(', ')
+            if len(parts) >= 4 and parts[2] == cik:
+                return parts[1]
+    print("Error in get_symbol_from_cik")
+    return None  # Return None if no match is found
 
 
 def get_all_tickers():
@@ -63,6 +54,8 @@ def get_all_tickers():
         for key in company_tickers:
             curr = company_tickers[key]
             file.write(f"{key},{curr['ticker']},{curr['cik_str']},{curr['title']}\n")
+
+    convert_csv_to_txt("all_tickers.csv", "all_tickers.txt")
 
 
 def get_sp500_stocks():
@@ -83,6 +76,7 @@ def get_sp500_stocks():
             name = cols[1].text.strip()
             data.append({'Symbol': symbol, 'Security': name})
 
+    print(data)
     return data
 
 
@@ -142,6 +136,8 @@ def main(cik: str = None, ticker: str = None):
 
     long_term_debt_10k = get_filtered_values(company_facts, 'LongTermDebtNoncurrent')
 
+    stockholders_equity_10k = get_filtered_values(company_facts, 'StockholdersEquity')
+
     # Extract fiscal periods and values for each category
     def extract_periods_and_values(data, key=None):
         periods = [entry['end'] for entry in data if 'frame' in entry and len(entry['frame']) == 6] # len() == 6 fixes bug with net income
@@ -152,6 +148,13 @@ def main(cik: str = None, ticker: str = None):
         if key == 'debt':
             periods = [entry['end'] for entry in data if 'frame' in entry]
             values = [entry['val'] for entry in data if 'frame' in entry]
+        if key == 'stockholders equity':
+            seen_ends = set()
+            for entry in data:
+                if entry['end'] not in seen_ends:
+                    seen_ends.add(entry['end'])
+                    periods.append(entry['end'])
+                    values.append(entry['val'])
         return periods, values
 
     # Extracting data
@@ -160,6 +163,7 @@ def main(cik: str = None, ticker: str = None):
     fiscal_periods_capex, capex_values = extract_periods_and_values(capital_expenditures_10k)
     fiscal_periods_acq, acq_values = extract_periods_and_values(acquisitions_10k)
     fiscal_periods_debt, debt_values = extract_periods_and_values(long_term_debt_10k, 'debt')
+    fiscal_periods_stockholders_equity, stockholders_equity_values = extract_periods_and_values(stockholders_equity_10k, key='stockholders equity')
 
     for i in range(len(fiscal_periods_cf)):
         print("operating cash flows", fiscal_periods_cf[i], cash_flow_values[i])
@@ -175,6 +179,9 @@ def main(cik: str = None, ticker: str = None):
 
     for i in range(len(fiscal_periods_debt)):
         print("long-term debt:", fiscal_periods_debt[i], debt_values[i])
+
+    for i in range(len(fiscal_periods_stockholders_equity)):
+        print("long-term debt:", fiscal_periods_stockholders_equity[i], stockholders_equity_values[i])
 
     print(len(net_income_10k), len(long_term_debt_10k), len(capital_expenditures_10k), len(acquisitions_10k), len(cash_flow_operations_10k))
 
@@ -193,7 +200,11 @@ def main(cik: str = None, ticker: str = None):
 
     # Plot acquisitions
     plt.plot(fiscal_periods_acq, acq_values, marker='o', linestyle='-', color='g', label='Acquisitions')
-    plt.plot(fiscal_periods_debt, debt_values, marker='o', linestyle='-', color='#FFC0CB', label='Long-term Debt')
+
+    plt.plot(fiscal_periods_stockholders_equity, stockholders_equity_values, marker='o', linestyle='-', color='#FFC0CB',
+             label='Stockholders Equity')
+
+    plt.plot(fiscal_periods_debt, debt_values, marker='o', linestyle='-', color='#F1C646', label='Long-term Debt')
 
     plt.title(f'Financial Data for {ticker} (10-K)')
     plt.xlabel('Fiscal Period')
@@ -207,7 +218,7 @@ def main(cik: str = None, ticker: str = None):
 
 
 if __name__ == "__main__":
-    # TICKER = 'CCRN'
-    # cik_value = get_cik_from_symbol(TICKER, add_zeroes=True)
-    # main(cik_value, ticker=TICKER)
-    print(get_sp500_stocks())
+    TICKER = 'TITN'
+    cik_value = get_cik_from_symbol(TICKER, add_zeroes=True)
+    main(cik_value, ticker=TICKER)
+

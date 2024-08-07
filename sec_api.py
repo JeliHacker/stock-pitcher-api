@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 import bs4
 import os
 from helpers import convert_csv_to_txt
+import datetime
 
 # create request header
 HEADERS = {'User-Agent': "eli@stockpitcher.app"}
@@ -80,15 +81,51 @@ def get_sp500_stocks():
     return data
 
 
-def get_filtered_values(data, key):
-    print("get_filtered_values", key)
+def get_10k_values(data, key):
+    """
+    Get 10-K values
+    :param data This is where company_facts go
+    :param key This is the category you are looking for 10K values for
+    """
+
     if key in data['facts']['us-gaap']:
         try:
             values = data['facts']['us-gaap'][key]['units']['USD']
         except KeyError:
+            print(f"KeyError for {key}")
             return []
         return [entry for entry in values if entry.get('form') == '10-K']
     return []
+
+
+def get_10k_values_operating_cf(data, key):
+    """
+    Get 10-K values for cash flows **EXPERIMENTAL**
+    :param data This is where company_facts go
+    :param key This is the category you are looking for 10K values for
+    """
+    alternate_keys = ["NetCashProvidedByUsedInOperatingActivities",
+                      "NetCashProvidedByUsedInOperatingActivitiesContinuingOperations"]
+
+    ten_k_values = []
+
+    for key in alternate_keys:
+        print("key", key)
+        if key in data['facts']['us-gaap']:
+            print(f"key {key} is in data!")
+            try:
+                values = data['facts']['us-gaap'][key]['units']['USD']
+                print("values", type(values), len(values))
+            except KeyError:
+                print(f"KeyError for {key}")
+                return []
+            print("entry for entry in blah blah", len([entry for entry in values if entry.get('form') == '10-K']))
+            ten_k_values.extend(entry for entry in values if entry.get('form') == '10-K')
+            print("len(ten_k_values)", len(ten_k_values))
+
+    ten_k_values.sort(key=lambda x: datetime.datetime.strptime(x['end'], '%Y-%m-%d'))
+    print("ten_k_values", ten_k_values)
+    return ten_k_values
 
 
 def main(cik: str = None, ticker: str = None):
@@ -106,7 +143,7 @@ def main(cik: str = None, ticker: str = None):
     #         category = company_facts['facts']['us-gaap'][key]['units']['USD']
     #         for dictionary in category:
     #
-    #             if dictionary['form'] == '10-K' and dictionary['fy'] == 2023:
+    #             if dictionary['form'] == '10-K' and dictionary['fy'] == 2017:
     #                 print(dictionary)
     #
     #                 print(key, dictionary['val'])
@@ -123,20 +160,20 @@ def main(cik: str = None, ticker: str = None):
 
     # Function to extract and filter data by form type (10-K)
 
-    net_income_10k = get_filtered_values(company_facts, 'NetIncomeLoss')
+    net_income_10k = get_10k_values(company_facts, 'NetIncomeLoss')
     print("net_income_10k", net_income_10k)
     # Get cash flow from operations.
-    cash_flow_operations_10k = get_filtered_values(company_facts, 'NetCashProvidedByUsedInOperatingActivities')
+    cash_flow_operations_10k = get_10k_values_operating_cf(company_facts, 'NetCashProvidedByUsedInOperatingActivities')
 
     # Get capital expenditures
-    capital_expenditures_10k = get_filtered_values(company_facts, 'PaymentsToAcquirePropertyPlantAndEquipment')
+    capital_expenditures_10k = get_10k_values(company_facts, 'PaymentsToAcquirePropertyPlantAndEquipment')
 
     # Get acquisitions
-    acquisitions_10k = get_filtered_values(company_facts, 'PaymentsToAcquireBusinessesNetOfCashAcquired')
+    acquisitions_10k = get_10k_values(company_facts, 'PaymentsToAcquireBusinessesNetOfCashAcquired')
 
-    long_term_debt_10k = get_filtered_values(company_facts, 'LongTermDebtNoncurrent')
+    long_term_debt_10k = get_10k_values(company_facts, 'LongTermDebtNoncurrent')
 
-    stockholders_equity_10k = get_filtered_values(company_facts, 'StockholdersEquity')
+    stockholders_equity_10k = get_10k_values(company_facts, 'StockholdersEquity')
 
     # Extract fiscal periods and values for each category
     def extract_periods_and_values(data, key=None):
@@ -157,9 +194,28 @@ def main(cik: str = None, ticker: str = None):
                     values.append(entry['val'])
         return periods, values
 
+    def extract_periods_and_values_for_operating_cash_flows(data, key=None):
+        print("data", data)
+        periods = [entry['end'] for entry in data if 'frame' in entry and len(entry['frame']) == 6] # len() == 6 fixes bug with net income
+        values = [entry['val'] for entry in data if 'frame' in entry and len(entry['frame']) == 6]
+        if key == 'net income':
+            print("net income entries with frames below")
+            print([entry for entry in data if 'frame' in entry])
+        if key == 'debt':
+            periods = [entry['end'] for entry in data if 'frame' in entry]
+            values = [entry['val'] for entry in data if 'frame' in entry]
+        if key == 'stockholders equity':
+            seen_ends = set()
+            for entry in data:
+                if entry['end'] not in seen_ends:
+                    seen_ends.add(entry['end'])
+                    periods.append(entry['end'])
+                    values.append(entry['val'])
+        return periods, values
+
     # Extracting data
     fiscal_periods_income, net_income_values = extract_periods_and_values(net_income_10k, 'net income')
-    fiscal_periods_cf, cash_flow_values = extract_periods_and_values(cash_flow_operations_10k)
+    fiscal_periods_cf, cash_flow_values = extract_periods_and_values_for_operating_cash_flows(cash_flow_operations_10k)
     fiscal_periods_capex, capex_values = extract_periods_and_values(capital_expenditures_10k)
     fiscal_periods_acq, acq_values = extract_periods_and_values(acquisitions_10k)
     fiscal_periods_debt, debt_values = extract_periods_and_values(long_term_debt_10k, 'debt')
@@ -181,7 +237,7 @@ def main(cik: str = None, ticker: str = None):
         print("long-term debt:", fiscal_periods_debt[i], debt_values[i])
 
     for i in range(len(fiscal_periods_stockholders_equity)):
-        print("long-term debt:", fiscal_periods_stockholders_equity[i], stockholders_equity_values[i])
+        print("stockholders equity:", fiscal_periods_stockholders_equity[i], stockholders_equity_values[i])
 
     print(len(net_income_10k), len(long_term_debt_10k), len(capital_expenditures_10k), len(acquisitions_10k), len(cash_flow_operations_10k))
 
@@ -195,16 +251,16 @@ def main(cik: str = None, ticker: str = None):
     plt.plot(fiscal_periods_income, net_income_values, marker='o', linestyle='-', color='#5E6472',
              label='Net Income')
 
-    # Plot capital expenditures
-    plt.plot(fiscal_periods_capex, capex_values, marker='o', linestyle='-', color='r', label='Capital Expenditures')
-
-    # Plot acquisitions
-    plt.plot(fiscal_periods_acq, acq_values, marker='o', linestyle='-', color='g', label='Acquisitions')
-
-    plt.plot(fiscal_periods_stockholders_equity, stockholders_equity_values, marker='o', linestyle='-', color='#FFC0CB',
-             label='Stockholders Equity')
-
-    plt.plot(fiscal_periods_debt, debt_values, marker='o', linestyle='-', color='#F1C646', label='Long-term Debt')
+    # # Plot capital expenditures
+    # plt.plot(fiscal_periods_capex, capex_values, marker='o', linestyle='-', color='r', label='Capital Expenditures')
+    #
+    # # Plot acquisitions
+    # plt.plot(fiscal_periods_acq, acq_values, marker='o', linestyle='-', color='g', label='Acquisitions')
+    #
+    # plt.plot(fiscal_periods_stockholders_equity, stockholders_equity_values, marker='o', linestyle='-', color='#FFC0CB',
+    #          label='Stockholders Equity')
+    #
+    # plt.plot(fiscal_periods_debt, debt_values, marker='o', linestyle='-', color='#F1C646', label='Long-term Debt')
 
     plt.title(f'Financial Data for {ticker} (10-K)')
     plt.xlabel('Fiscal Period')

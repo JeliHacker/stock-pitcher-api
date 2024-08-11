@@ -10,6 +10,8 @@ SEC Filing Scraper
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+from matplotlib.ticker import FuncFormatter
 import bs4
 import os
 from helpers import convert_csv_to_txt
@@ -128,6 +130,34 @@ def get_10k_values_operating_cf(data, key):
     return ten_k_values
 
 
+def get_10k_values_with_alternate_keys(data, alternate_keys):
+    """
+    Get 10-K values for cash flows **EXPERIMENTAL**
+    :param data This is where company_facts go
+    :param alternate_keys A list of alternate keys
+    """
+
+    ten_k_values = []
+
+    for key in alternate_keys:
+        print("key", key)
+        if key in data['facts']['us-gaap']:
+            print(f"key {key} is in data!")
+            try:
+                values = data['facts']['us-gaap'][key]['units']['USD']
+                print("values", type(values), len(values))
+            except KeyError:
+                print(f"KeyError for {key}")
+                return []
+            print("entry for entry in blah blah", len([entry for entry in values if entry.get('form') == '10-K']))
+            ten_k_values.extend(entry for entry in values if entry.get('form') == '10-K')
+            print("len(ten_k_values)", len(ten_k_values))
+
+    ten_k_values.sort(key=lambda x: datetime.datetime.strptime(x['end'], '%Y-%m-%d'))
+    print("ten_k_values", ten_k_values)
+    return ten_k_values
+
+
 def main(cik: str = None, ticker: str = None):
     # get company facts data
     company_facts = requests.get(
@@ -143,22 +173,13 @@ def main(cik: str = None, ticker: str = None):
     #         category = company_facts['facts']['us-gaap'][key]['units']['USD']
     #         for dictionary in category:
     #
-    #             if dictionary['form'] == '10-K' and dictionary['fy'] == 2017:
+    #             if dictionary['form'] == '10-K' and dictionary['fy'] == 2023:
     #                 print(dictionary)
     #
     #                 print(key, dictionary['val'])
     #     except KeyError:
     #         print(f"key error for {key}")
     # return
-
-    # for dictionary in company_facts['facts']['us-gaap']['LongTerm']['units']['USD']:
-    #     print(dictionary)
-    #     if dictionary['end'] == '2024-03-31':
-    #         print(dictionary)
-    # print("END")
-    # return
-
-    # Function to extract and filter data by form type (10-K)
 
     net_income_10k = get_10k_values(company_facts, 'NetIncomeLoss')
     print("net_income_10k", net_income_10k)
@@ -171,9 +192,21 @@ def main(cik: str = None, ticker: str = None):
     # Get acquisitions
     acquisitions_10k = get_10k_values(company_facts, 'PaymentsToAcquireBusinessesNetOfCashAcquired')
 
-    long_term_debt_10k = get_10k_values(company_facts, 'LongTermDebtNoncurrent')
+    long_term_debt_10k = get_10k_values_with_alternate_keys(
+        company_facts,
+        ['LongTermDebtNoncurrent', 'LongTermDebt', 'LongTermDebtAndCapitalLeaseObligations'])
 
     stockholders_equity_10k = get_10k_values(company_facts, 'StockholdersEquity')
+
+    revenue_10k = get_10k_values_with_alternate_keys(
+        company_facts,
+        ['RevenueFromContractWithCustomerExcludingAssessedTax', 'SalesRevenueNet', 'Revenues', 'SalesRevenueServicesNet']
+    )
+
+    stock_repurchases_10k = get_10k_values_with_alternate_keys(
+        data=company_facts,
+        alternate_keys=['PaymentsForRepurchaseOfCommonStock', 'StockRepurchasedAndRetiredDuringPeriodValue']
+    )
 
     # Extract fiscal periods and values for each category
     def extract_periods_and_values(data, key=None):
@@ -220,6 +253,8 @@ def main(cik: str = None, ticker: str = None):
     fiscal_periods_acq, acq_values = extract_periods_and_values(acquisitions_10k)
     fiscal_periods_debt, debt_values = extract_periods_and_values(long_term_debt_10k, 'debt')
     fiscal_periods_stockholders_equity, stockholders_equity_values = extract_periods_and_values(stockholders_equity_10k, key='stockholders equity')
+    fiscal_periods_revenue, revenue_values = extract_periods_and_values(revenue_10k)
+    fiscal_periods_stock_repurchases, stock_repurchases_values = extract_periods_and_values(stock_repurchases_10k)
 
     for i in range(len(fiscal_periods_cf)):
         print("operating cash flows", fiscal_periods_cf[i], cash_flow_values[i])
@@ -239,6 +274,12 @@ def main(cik: str = None, ticker: str = None):
     for i in range(len(fiscal_periods_stockholders_equity)):
         print("stockholders equity:", fiscal_periods_stockholders_equity[i], stockholders_equity_values[i])
 
+    for i in range(len(fiscal_periods_revenue)):
+        print("revenue:", fiscal_periods_revenue[i], revenue_values[i])
+
+    for i in range(len(fiscal_periods_stock_repurchases)):
+        print("stock buybacks:", fiscal_periods_stock_repurchases[i], stock_repurchases_values[i])
+
     print(len(net_income_10k), len(long_term_debt_10k), len(capital_expenditures_10k), len(acquisitions_10k), len(cash_flow_operations_10k))
 
     # Plot the data
@@ -251,20 +292,27 @@ def main(cik: str = None, ticker: str = None):
     plt.plot(fiscal_periods_income, net_income_values, marker='o', linestyle='-', color='#5E6472',
              label='Net Income')
 
+    # Format the y-axis to display values in millions
+    plt.gca().yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'${x / 1e6:.0f}M'))
+
     # # Plot capital expenditures
     # plt.plot(fiscal_periods_capex, capex_values, marker='o', linestyle='-', color='r', label='Capital Expenditures')
     #
-    # # Plot acquisitions
-    # plt.plot(fiscal_periods_acq, acq_values, marker='o', linestyle='-', color='g', label='Acquisitions')
+    # Plot acquisitions
+    plt.plot(fiscal_periods_acq, acq_values, marker='o', linestyle='-', color='g', label='Acquisitions')
     #
     # plt.plot(fiscal_periods_stockholders_equity, stockholders_equity_values, marker='o', linestyle='-', color='#FFC0CB',
     #          label='Stockholders Equity')
     #
-    # plt.plot(fiscal_periods_debt, debt_values, marker='o', linestyle='-', color='#F1C646', label='Long-term Debt')
+    plt.plot(fiscal_periods_debt, debt_values, marker='o', linestyle='-', color='#FF0000', label='Long-term Debt')
+
+    plt.plot(fiscal_periods_revenue, revenue_values, marker='o', linestyle='-', color='#F1C646', label='Revenue')
+
+    plt.plot(fiscal_periods_stock_repurchases, stock_repurchases_values, marker='o', linestyle='-', color='#00FFFF', label='Stock Buybacks')
 
     plt.title(f'Financial Data for {ticker} (10-K)')
     plt.xlabel('Fiscal Period')
-    plt.ylabel('USD')
+    plt.ylabel('USD in Millions')
     plt.legend()
     plt.grid(True)
     plt.xticks(rotation=45)
@@ -274,7 +322,7 @@ def main(cik: str = None, ticker: str = None):
 
 
 if __name__ == "__main__":
-    TICKER = 'TITN'
+    TICKER = 'ORCL'
     cik_value = get_cik_from_symbol(TICKER, add_zeroes=True)
     main(cik_value, ticker=TICKER)
 

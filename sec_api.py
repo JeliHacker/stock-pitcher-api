@@ -16,6 +16,7 @@ import bs4
 import os
 from helpers import convert_csv_to_txt
 import datetime
+import time
 
 # create request header
 HEADERS = {'User-Agent': "eli@stockpitcher.app"}
@@ -164,6 +165,7 @@ def main(cik: str = None, ticker: str = None):
         f'https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json',
         headers=HEADERS
     ).json()
+    time.sleep(0.11)
 
     # print(company_facts['facts']['us-gaap'].keys())
     # this code gets all the values for a given year and 10-K
@@ -173,7 +175,7 @@ def main(cik: str = None, ticker: str = None):
     #         category = company_facts['facts']['us-gaap'][key]['units']['USD']
     #         for dictionary in category:
     #
-    #             if dictionary['form'] == '10-K' and dictionary['fy'] == 2023:
+    #             if dictionary['form'] == '10-K' and dictionary['fy'] == 2022:  # change the date here
     #                 print(dictionary)
     #
     #                 print(key, dictionary['val'])
@@ -181,13 +183,13 @@ def main(cik: str = None, ticker: str = None):
     #         print(f"key error for {key}")
     # return
 
-    net_income_10k = get_10k_values(company_facts, 'NetIncomeLoss')
+    net_income_10k = get_10k_values_with_alternate_keys(company_facts, ['NetIncomeLoss', 'ProfitLoss'])
     print("net_income_10k", net_income_10k)
     # Get cash flow from operations.
     cash_flow_operations_10k = get_10k_values_operating_cf(company_facts, 'NetCashProvidedByUsedInOperatingActivities')
 
     # Get capital expenditures
-    capital_expenditures_10k = get_10k_values(company_facts, 'PaymentsToAcquirePropertyPlantAndEquipment')
+    capital_expenditures_10k = get_10k_values_with_alternate_keys(company_facts, ['PaymentsToAcquirePropertyPlantAndEquipment', 'PaymentsForCapitalImprovements', 'PaymentsToAcquireProductiveAssets'])
 
     # Get acquisitions
     acquisitions_10k = get_10k_values(company_facts, 'PaymentsToAcquireBusinessesNetOfCashAcquired')
@@ -196,11 +198,17 @@ def main(cik: str = None, ticker: str = None):
         company_facts,
         ['LongTermDebtNoncurrent', 'LongTermDebt', 'LongTermDebtAndCapitalLeaseObligations'])
 
-    stockholders_equity_10k = get_10k_values(company_facts, 'StockholdersEquity')
+    stockholders_equity_10k = get_10k_values_with_alternate_keys(company_facts, ['StockholdersEquity'])
 
     revenue_10k = get_10k_values_with_alternate_keys(
         company_facts,
-        ['RevenueFromContractWithCustomerExcludingAssessedTax', 'SalesRevenueNet', 'Revenues', 'SalesRevenueServicesNet']
+        ['RevenueFromContractWithCustomerExcludingAssessedTax'
+            , 'RevenueFromContractWithCustomerIncludingAssessedTax'
+            , 'SalesRevenueNet'
+            , 'Revenues'
+            , 'SalesRevenueServicesNet'
+            , 'LeaseIncome'
+            , 'SalesRevenueGoodsNet']
     )
 
     stock_repurchases_10k = get_10k_values_with_alternate_keys(
@@ -262,6 +270,9 @@ def main(cik: str = None, ticker: str = None):
     for i in range(len(fiscal_periods_capex)):
         print("capex:", fiscal_periods_capex[i], capex_values[i])
 
+    for i in range(len(fiscal_periods_cf)):
+        print("operating cash flows", fiscal_periods_cf[i], cash_flow_values[i])
+
     for i in range(len(fiscal_periods_acq)):
         print("acquisitions:", fiscal_periods_acq[i], acq_values[i])
 
@@ -277,13 +288,31 @@ def main(cik: str = None, ticker: str = None):
     for i in range(len(fiscal_periods_revenue)):
         print("revenue:", fiscal_periods_revenue[i], revenue_values[i])
 
-    for i in range(len(fiscal_periods_stock_repurchases)):
-        print("stock buybacks:", fiscal_periods_stock_repurchases[i], stock_repurchases_values[i])
+    # for i in range(len(fiscal_periods_stock_repurchases)):
+    #     print("stock buybacks:", fiscal_periods_stock_repurchases[i], stock_repurchases_values[i])
+
+    for i in range(len(fiscal_periods_cf)):
+        try:
+
+            fcf = cash_flow_values[i] - capex_values[i]
+            print("Free cash flow", fiscal_periods_cf[i], fcf)
+        except IndexError:
+            print("Index is out of range (null)", i, len(cash_flow_values), len(capex_values))
+            print(cash_flow_values)
+            print(capex_values)
+
 
     print(len(net_income_10k), len(long_term_debt_10k), len(capital_expenditures_10k), len(acquisitions_10k), len(cash_flow_operations_10k))
 
     # Plot the data
     plt.figure(figsize=(12, 8))
+
+    # Plot capital expenditures
+    # plt.plot(fiscal_periods_capex, capex_values, marker='o', linestyle='-', color='#33FF33',
+    #          label='Capital Expenditures')
+
+    # plt.plot(fiscal_periods_stockholders_equity, stockholders_equity_values, marker='o', linestyle='-', color='#FFC0CB',
+    #          label='Stockholders Equity')
 
     # Plot cash flow from operations
     plt.plot(fiscal_periods_cf, cash_flow_values, marker='o', linestyle='-', color='b',
@@ -295,16 +324,10 @@ def main(cik: str = None, ticker: str = None):
     # Format the y-axis to display values in millions
     plt.gca().yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'${x / 1e6:.0f}M'))
 
-    # # Plot capital expenditures
-    # plt.plot(fiscal_periods_capex, capex_values, marker='o', linestyle='-', color='r', label='Capital Expenditures')
-    #
     # Plot acquisitions
     plt.plot(fiscal_periods_acq, acq_values, marker='o', linestyle='-', color='g', label='Acquisitions')
-    #
-    # plt.plot(fiscal_periods_stockholders_equity, stockholders_equity_values, marker='o', linestyle='-', color='#FFC0CB',
-    #          label='Stockholders Equity')
-    #
-    plt.plot(fiscal_periods_debt, debt_values, marker='o', linestyle='-', color='#FF0000', label='Long-term Debt')
+
+    # plt.plot(fiscal_periods_debt, debt_values, marker='o', linestyle='-', color='#FF0000', label='Long-term Debt')
 
     plt.plot(fiscal_periods_revenue, revenue_values, marker='o', linestyle='-', color='#F1C646', label='Revenue')
 
@@ -322,7 +345,7 @@ def main(cik: str = None, ticker: str = None):
 
 
 if __name__ == "__main__":
-    TICKER = 'ORCL'
+    TICKER = 'BRBR'.upper()
     cik_value = get_cik_from_symbol(TICKER, add_zeroes=True)
+    print(cik_value)
     main(cik_value, ticker=TICKER)
-

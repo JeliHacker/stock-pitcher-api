@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# Comes from https://github.com/rsljr/edgarParser/blob/master/parse_345.py
-
 # ## Corporate insider trading data ##
 # This notebook contains a few functions to parse forms 3, 4 and 5 (see the [SEC FAQ](https://www.sec.gov/fast-answers/answersform345htm.html) for details about these forms). The function *parse_345()* takes the form and return a dataframe in which each row is a transaction reported in the form. The text from the request serves as input for the *parse_345()*. The input is cleaned and later passes through the function that extracts the data from the form.
-# 
-# **Caveats:**  
+#
+# **Caveats:**
 # Current function covers only files with xml. Function *parse_345()* is a parser. You need to feed a SEC txt link into it. There are many python and r packages to get a direct link to the filings.
 
 # required
@@ -15,6 +13,7 @@ from bs4 import BeautifulSoup as bs
 import requests
 import re
 import numpy as np
+from sec_api import HEADERS
 
 
 def parse_345(link):
@@ -194,7 +193,7 @@ def parse_345(link):
 
         return (data)
 
-    linkRequest = str(requests.get(link, headers={'User-Agent': 'Mozilla'}).content)
+    linkRequest = str(requests.get(link, headers=HEADERS).content)
     text = clean_text_xml(linkRequest)
     identityData = get_identity(text)
     dataNonTable = get_non_derivative_table(text)
@@ -210,3 +209,9 @@ def parse_345(link):
         data["footnotes"] = text.find("footnotes").text
 
     return (data)
+
+parse_data = parse_345("https://www.sec.gov/Archives/edgar/data/103379/000112760224019866/0001127602-24-019866.txt")
+print("parse_data", type(parse_data))
+print(parse_data.to_string())
+print()
+

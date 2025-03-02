@@ -1,5 +1,5 @@
-from download_stocks_list import download_nasdaq_list
-from scrape_all_stocks import scrape_all_stocks
+from scraper.download_stocks_list import download_nasdaq_list
+from scraper.scrape_all_stocks import scrape_all_stocks
 import datetime
 import os
 import requests

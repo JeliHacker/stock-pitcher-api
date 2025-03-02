@@ -29,5 +29,4 @@ def convert_csv_to_txt(csv_file_path, txt_file_path):
 
 
 if __name__ == "__main__":
-    print("main()")
     convert_csv_to_txt("all_tickers.csv", "all_tickers.txt")

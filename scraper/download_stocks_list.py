@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 import pandas as pd
 import time
-from scrape_all_stocks import create_driver
+from scraper.scrape_all_stocks import create_driver
 import shutil
 import os
 from glob import glob

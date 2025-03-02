@@ -2,160 +2,172 @@
     {
         "Symbol": "MMM",
         "Security": "3M",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "AOS",
         "Security": "A. O. Smith",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "ABT",
         "Security": "Abbott",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "ABBV",
         "Security": "AbbVie",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "ACN",
         "Security": "Accenture",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "ADBE",
         "Security": "Adobe Inc.",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "AMD",
         "Security": "Advanced Micro Devices",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "AES",
         "Security": "AES Corporation",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "AFL",
         "Security": "Aflac",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "A",
         "Security": "Agilent Technologies",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "APD",
         "Security": "Air Products and Chemicals",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "ABNB",
         "Security": "Airbnb",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-30"
     },
     {
         "Symbol": "AKAM",
         "Security": "Akamai",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "ALB",
         "Security": "Albemarle Corporation",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "ARE",
         "Security": "Alexandria Real Estate Equities",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "ALGN",
         "Security": "Align Technology",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "ALLE",
         "Security": "Allegion",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "LNT",
         "Security": "Alliant Energy",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "ALL",
         "Security": "Allstate",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "GOOGL",
         "Security": "Alphabet Inc. (Class A)",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "GOOG",
         "Security": "Alphabet Inc. (Class C)",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "MO",
         "Security": "Altria",
-        "Last Scraped": "2024-07-28"
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AMZN",
-        "Security": "Amazon"
+        "Security": "Amazon",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AMCR",
-        "Security": "Amcor"
+        "Security": "Amcor",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AEE",
-        "Security": "Ameren"
+        "Security": "Ameren",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AAL",
-        "Security": "American Airlines Group"
+        "Security": "American Airlines Group",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AEP",
-        "Security": "American Electric Power"
+        "Security": "American Electric Power",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AXP",
-        "Security": "American Express"
+        "Security": "American Express",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AIG",
-        "Security": "American International Group"
+        "Security": "American International Group",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AMT",
-        "Security": "American Tower"
+        "Security": "American Tower",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AWK",
-        "Security": "American Water Works"
+        "Security": "American Water Works",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AMP",
-        "Security": "Ameriprise Financial"
+        "Security": "Ameriprise Financial",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AME",
-        "Security": "Ametek"
+        "Security": "Ametek",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "AMGN",
-        "Security": "Amgen"
+        "Security": "Amgen",
+        "Last Scraped": "2024-07-29"
     },
     {
         "Symbol": "APH",

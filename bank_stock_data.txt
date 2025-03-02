@@ -1,0 +1,2215 @@
+/Users/eligooch/Desktop/git/stock_pitcher_api/venv/bin/python /Users/eligooch/Desktop/git/stock_pitcher_api/analyze_banks.py 
+BWFG
+stockholders equity: $268,032,000.00,
+stock price: $24.66,
+shares outstanding: 7663521,
+market cap: $188,982,426.69
+book value / market cap (P/B): $0.71
+MNSB
+stockholders equity: $223,121,000.00,
+stock price: $17.82,
+shares outstanding: 7611990,
+market cap: $135,645,659.48
+book value / market cap (P/B): $0.61
+FCNCA
+stockholders equity: $21,848,000,000.00,
+stock price: $1,832.79,
+shares outstanding: 14533302,
+market cap: $26,636,491,140.29
+book value / market cap (P/B): $1.22
+MCB
+stockholders equity: $673,541,000.00,
+stock price: $55.90,
+shares outstanding: 11132989,
+market cap: $622,334,102.09
+book value / market cap (P/B): $0.92
+OPBK
+stockholders equity: $194,725,000.00,
+stock price: $11.10,
+shares outstanding: 14991835,
+market cap: $166,409,374.22
+book value / market cap (P/B): $0.85
+OSBC
+stockholders equity: $596,159,000.00,
+stock price: $16.36,
+shares outstanding: 44758559,
+market cap: $732,250,052.56
+book value / market cap (P/B): $1.23
+CIVB
+stockholders equity: $369,659,000.00,
+stock price: $17.63,
+shares outstanding: 15134619,
+market cap: $266,823,320.27
+book value / market cap (P/B): $0.72
+SSBK
+stockholders equity: $222,881,000.00,
+stock price: $29.37,
+shares outstanding: 8913477,
+market cap: $261,788,826.97
+book value / market cap (P/B): $1.17
+FSBW
+stockholders equity: $277,932,000.00,
+stock price: $40.00,
+shares outstanding: 7703789,
+market cap: $308,151,560.00
+book value / market cap (P/B): $1.11
+UNTY
+stockholders equity: $266,761,000.00,
+stock price: $34.25,
+shares outstanding: 10127000,
+market cap: $346,849,750.00
+book value / market cap (P/B): $1.30
+BY
+stockholders equity: $1,009,049,000.00,
+stock price: $27.59,
+shares outstanding: 43258087,
+market cap: $1,193,490,626.93
+book value / market cap (P/B): $1.18
+ETW
+ETW has a KeyError
+NBN
+Error in get_cik_from_symbol
+FINW
+stockholders equity: $162,482,000.00,
+stock price: $11.58,
+shares outstanding: 12502448,
+market cap: $144,778,346.89
+book value / market cap (P/B): $0.89
+PFBC
+MBIN
+stockholders equity: $1,776,468,000.00,
+stock price: $48.95,
+shares outstanding: 43305985,
+market cap: $2,119,827,998.79
+book value / market cap (P/B): $1.19
+ORRF
+stockholders equity: $271,682,000.00,
+stock price: $30.97,
+shares outstanding: 10349000,
+market cap: $320,508,522.89
+book value / market cap (P/B): $1.18
+CUBI
+stockholders equity: $1,691,617,000.00,
+stock price: $61.88,
+shares outstanding: 31473424,
+market cap: $1,947,575,510.74
+book value / market cap (P/B): $1.15
+FUNC
+stockholders equity: $165,481,000.00,
+stock price: $24.01,
+shares outstanding: 6642000,
+market cap: $159,474,421.52
+book value / market cap (P/B): $0.96
+AMAL
+stockholders equity: $616,805,000.00,
+stock price: $31.49,
+shares outstanding: 30476000,
+market cap: $959,689,233.02
+book value / market cap (P/B): $1.56
+CBNK
+stockholders equity: $259,465,000.00,
+stock price: $23.45,
+shares outstanding: 13918724,
+market cap: $326,394,088.42
+book value / market cap (P/B): $1.26
+FNCB
+$FNCB: possibly delisted; No price data found  (period=1d)
+Error getting price for FNCB.
+FRBA
+Error in get_cik_from_symbol
+CASH
+$FNCB: possibly delisted; No price data found  (period=1d)
+stockholders equity: $739,882,000.00,
+stock price: $63.60,
+shares outstanding: 25281743,
+market cap: $1,607,918,816.22
+book value / market cap (P/B): $2.17
+CFBK
+stockholders equity: $157,999,000.00,
+stock price: $20.37,
+shares outstanding: 6329898,
+market cap: $128,940,027.57
+book value / market cap (P/B): $0.82
+MRBK
+stockholders equity: $159,936,000.00,
+stock price: $11.56,
+shares outstanding: 11088000,
+market cap: $128,177,284.65
+book value / market cap (P/B): $0.80
+BFST
+stockholders equity: $649,034,000.00,
+stock price: $23.60,
+shares outstanding: 25127187,
+market cap: $593,001,622.79
+book value / market cap (P/B): $0.91
+OBT
+stockholders equity: $168,668,000.00,
+stock price: $58.10,
+shares outstanding: 5634937,
+market cap: $327,389,831.10
+book value / market cap (P/B): $1.94
+CFB
+stockholders equity: $714,971,000.00,
+stock price: $17.84,
+shares outstanding: 49510808,
+market cap: $883,272,822.27
+book value / market cap (P/B): $1.24
+CBAN
+stockholders equity: $259,914,000.00,
+stock price: $13.55,
+shares outstanding: 17560210,
+market cap: $237,940,848.85
+book value / market cap (P/B): $0.92
+TSBK
+stockholders equity: $238,679,000.00,
+stock price: $29.60,
+shares outstanding: 8081924,
+market cap: $239,224,953.48
+book value / market cap (P/B): $1.00
+BCML
+stockholders equity: $314,235,000.00,
+stock price: $23.14,
+shares outstanding: 11525752,
+market cap: $266,705,894.25
+book value / market cap (P/B): $0.85
+PKBK
+stockholders equity: $288,386,000.00,
+stock price: $18.16,
+shares outstanding: 11958776,
+market cap: $217,171,370.34
+book value / market cap (P/B): $0.75
+SNEX
+stockholders equity: $1,542,600,000.00,
+stock price: $79.14,
+shares outstanding: 30473856,
+market cap: $2,411,700,945.24
+book value / market cap (P/B): $1.56
+SSBI
+Error in get_cik_from_symbol
+WAL
+stockholders equity: $6,172,500,000.00,
+stock price: $76.72,
+shares outstanding: 108500000,
+market cap: $8,324,120,132.45
+book value / market cap (P/B): $1.35
+BWB
+stockholders equity: $433,611,000.00,
+stock price: $13.28,
+shares outstanding: 27691401,
+market cap: $367,741,797.89
+book value / market cap (P/B): $0.85
+OVLY
+stockholders equity: $166,916,000.00,
+stock price: $26.67,
+shares outstanding: 8210000,
+market cap: $218,960,700.63
+book value / market cap (P/B): $1.31
+CCBG
+stockholders equity: $448,314,000.00,
+stock price: $32.10,
+shares outstanding: 16951,
+market cap: $544,127.07
+book value / market cap (P/B): $0.00
+HBCP
+stockholders equity: $372,285,000.00,
+stock price: $41.85,
+shares outstanding: 7984000,
+market cap: $334,130,387.82
+book value / market cap (P/B): $0.90
+CALB
+stockholders equity: $200,685,000.00,
+stock price: $23.56,
+shares outstanding: 8413735,
+market cap: $198,227,592.11
+book value / market cap (P/B): $0.99
+ESQ
+stockholders equity: $207,078,000.00,
+stock price: $55.13,
+shares outstanding: 7786887,
+market cap: $429,291,088.63
+book value / market cap (P/B): $2.07
+SMMF
+Error in get_cik_from_symbol
+FMNB
+stockholders equity: $397,026,000.00,
+stock price: $14.04,
+shares outstanding: 37278214,
+market cap: $523,386,123.14
+book value / market cap (P/B): $1.32
+CMA
+CMA has a KeyError
+TCBX
+stockholders equity: $423,618,000.00,
+stock price: $23.07,
+shares outstanding: 13606256,
+market cap: $313,896,321.77
+book value / market cap (P/B): $0.74
+SMBK
+stockholders equity: $466,796,000.00,
+stock price: $26.67,
+shares outstanding: 16849735,
+market cap: $449,382,433.74
+book value / market cap (P/B): $0.96
+EFSC
+stockholders equity: $1,731,725,000.00,
+stock price: $47.50,
+shares outstanding: 37490000,
+market cap: $1,780,775,000.00
+book value / market cap (P/B): $1.03
+OBK
+stockholders equity: $1,078,853,000.00,
+stock price: $35.63,
+shares outstanding: 30981333,
+market cap: $1,103,864,927.88
+book value / market cap (P/B): $1.02
+VBTX
+stockholders equity: $1,538,515,000.00,
+stock price: $23.86,
+shares outstanding: 54444000,
+market cap: $1,299,033,873.23
+book value / market cap (P/B): $0.84
+BPOP
+stockholders equity: $5,177,314,000.00,
+stock price: $99.01,
+shares outstanding: 71869735,
+market cap: $7,115,822,615.88
+book value / market cap (P/B): $1.37
+OZK
+RBB
+stockholders equity: $294,998,000.00,
+stock price: $21.67,
+shares outstanding: 18601277,
+market cap: $403,089,674.01
+book value / market cap (P/B): $1.37
+ZION
+stockholders equity: $5,829,000,000.00,
+stock price: $48.98,
+shares outstanding: 147338000,
+market cap: $7,216,615,172.55
+book value / market cap (P/B): $1.24
+CFG
+stockholders equity: $23,761,000,000.00,
+stock price: $41.00,
+shares outstanding: 461358681,
+market cap: $18,915,705,921.00
+book value / market cap (P/B): $0.80
+PBHC
+stockholders equity: $121,818,000.00,
+stock price: $15.00,
+shares outstanding: 4442000,
+market cap: $66,630,000.00
+book value / market cap (P/B): $0.55
+BPRN
+stockholders equity: $241,808,000.00,
+stock price: $36.42,
+shares outstanding: 6328000,
+market cap: $230,465,748.41
+book value / market cap (P/B): $0.95
+EGBN
+stockholders equity: $1,259,413,000.00,
+stock price: $22.23,
+shares outstanding: 30068000,
+market cap: $668,411,626.24
+book value / market cap (P/B): $0.53
+UBCP
+stockholders equity: $63,206,000.00,
+stock price: $12.68,
+shares outstanding: 5499877,
+market cap: $69,738,442.04
+book value / market cap (P/B): $1.10
+ISTR
+stockholders equity: $227,005,000.00,
+stock price: $17.48,
+shares outstanding: 9769626,
+market cap: $170,773,058.01
+book value / market cap (P/B): $0.75
+DCOM
+stockholders equity: $1,239,371,000.00,
+stock price: $23.88,
+shares outstanding: 38255558,
+market cap: $913,542,692.93
+book value / market cap (P/B): $0.74
+HNVR
+stockholders equity: $189,543,000.00,
+stock price: $17.30,
+shares outstanding: 7118460,
+market cap: $123,149,352.57
+book value / market cap (P/B): $0.65
+SNV
+stockholders equity: $5,017,918,000.00,
+stock price: $45.09,
+shares outstanding: 146430000,
+market cap: $6,602,528,722.34
+book value / market cap (P/B): $1.32
+CCB
+stockholders equity: $303,709,000.00,
+stock price: $50.75,
+shares outstanding: 13340997,
+market cap: $677,055,597.75
+book value / market cap (P/B): $2.23
+QCRH
+stockholders equity: $907,342,000.00,
+stock price: $68.13,
+shares outstanding: 16783348,
+market cap: $1,143,449,453.14
+book value / market cap (P/B): $1.26
+ABCB
+stockholders equity: $3,484,738,000.00,
+stock price: $58.62,
+shares outstanding: 68808393,
+market cap: $4,033,547,924.16
+book value / market cap (P/B): $1.16
+FISI
+stockholders equity: $445,734,000.00,
+stock price: $22.09,
+shares outstanding: 15403000,
+market cap: $340,252,272.35
+book value / market cap (P/B): $0.76
+CSTR
+Error in get_cik_from_symbol
+BAC
+stockholders equity: $293,552,000,000.00,
+stock price: $42.90,
+shares outstanding: 7968200000,
+market cap: $341,835,792,158.51
+book value / market cap (P/B): $1.16
+JMSB
+stockholders equity: $234,550,000.00,
+stock price: $18.46,
+shares outstanding: 14130986,
+market cap: $260,857,988.62
+book value / market cap (P/B): $1.11
+FBMS
+stockholders equity: $959,912,000.00,
+stock price: $29.19,
+shares outstanding: 31475254,
+market cap: $918,762,681.07
+book value / market cap (P/B): $0.96
+BOTJ
+stockholders equity: $60,437,000.00,
+stock price: $11.87,
+shares outstanding: 4543338,
+market cap: $53,929,421.54
+book value / market cap (P/B): $0.89
+EWBC
+stockholders equity: $7,023,232,000.00,
+stock price: $79.92,
+shares outstanding: 139409000,
+market cap: $11,141,567,024.73
+book value / market cap (P/B): $1.59
+TBBK
+stockholders equity: $816,765,000.00,
+stock price: $48.25,
+shares outstanding: 52747140,
+market cap: $2,545,049,505.00
+book value / market cap (P/B): $3.12
+PFC
+stockholders equity: $974,341,000.00,
+stock price: $24.26,
+shares outstanding: 35664000,
+market cap: $865,208,648.16
+book value / market cap (P/B): $0.89
+SPFI
+stockholders equity: $408,712,000.00,
+stock price: $31.25,
+shares outstanding: 16429919,
+market cap: $513,434,968.75
+book value / market cap (P/B): $1.26
+OPY
+stockholders equity: $801,522,000.00,
+stock price: $53.35,
+shares outstanding: 10407454,
+market cap: $555,237,655.02
+book value / market cap (P/B): $0.69
+NIC
+stockholders equity: $1,063,655,000.00,
+stock price: $97.32,
+shares outstanding: 14907124,
+market cap: $1,450,761,303.13
+book value / market cap (P/B): $1.36
+FCF
+stockholders equity: $1,332,720,000.00,
+stock price: $16.40,
+shares outstanding: 101981248,
+market cap: $1,672,492,428.30
+book value / market cap (P/B): $1.25
+EBMT
+stockholders equity: $168,948,000.00,
+stock price: $14.29,
+shares outstanding: 7824928,
+market cap: $111,818,220.82
+book value / market cap (P/B): $0.66
+RF
+stockholders equity: $17,044,000,000.00,
+stock price: $22.09,
+shares outstanding: 921000000,
+market cap: $20,344,890,140.53
+book value / market cap (P/B): $1.19
+PCB
+stockholders equity: $350,005,000.00,
+stock price: $17.27,
+shares outstanding: 14235419,
+market cap: $245,845,692.65
+book value / market cap (P/B): $0.70
+MPB
+stockholders equity: $550,968,000.00,
+stock price: $25.33,
+shares outstanding: 16567902,
+market cap: $419,664,956.40
+book value / market cap (P/B): $0.76
+CATY
+stockholders equity: $2,778,072,000.00,
+stock price: $42.00,
+shares outstanding: 72673974,
+market cap: $3,052,306,908.00
+book value / market cap (P/B): $1.10
+WBS
+stockholders equity: $2,209,188,000.00,
+stock price: $47.82,
+shares outstanding: 170445000,
+market cap: $8,150,679,847.98
+book value / market cap (P/B): $3.69
+CVCY
+Error in get_cik_from_symbol
+MBWM
+stockholders equity: $536,644,000.00,
+stock price: $47.96,
+shares outstanding: 16118858,
+market cap: $773,060,414.92
+book value / market cap (P/B): $1.44
+CHMG
+stockholders equity: $197,128,000.00,
+stock price: $49.00,
+shares outstanding: 4764000,
+market cap: $233,436,000.00
+book value / market cap (P/B): $1.18
+IBOC
+stockholders equity: $2,483,890,000.00,
+stock price: $65.83,
+shares outstanding: 62150378,
+market cap: $4,091,359,497.54
+book value / market cap (P/B): $1.65
+HTBK
+stockholders equity: $676,296,000.00,
+stock price: $10.07,
+shares outstanding: 61186623,
+market cap: $616,149,274.94
+book value / market cap (P/B): $0.91
+UBFO
+stockholders equity: $124,184,000.00,
+stock price: $7.90,
+shares outstanding: 17170907,
+market cap: $135,650,166.94
+book value / market cap (P/B): $1.09
+BANR
+stockholders equity: $1,664,508,000.00,
+stock price: $58.16,
+shares outstanding: 34391564,
+market cap: $2,000,213,356.99
+book value / market cap (P/B): $1.20
+MYFW
+stockholders equity: $245,528,000.00,
+stock price: $19.68,
+shares outstanding: 9621309,
+market cap: $189,347,364.06
+book value / market cap (P/B): $0.77
+HWC
+stockholders equity: $3,853,436,000.00,
+stock price: $53.63,
+shares outstanding: 86521000,
+market cap: $4,640,121,322.41
+book value / market cap (P/B): $1.20
+EBTC
+stockholders equity: $333,439,000.00,
+stock price: $27.34,
+shares outstanding: 12292417,
+market cap: $336,074,682.66
+book value / market cap (P/B): $1.01
+RVSB
+stockholders equity: $155,588,000.00,
+stock price: $4.42,
+shares outstanding: 21137976,
+market cap: $93,429,855.53
+book value / market cap (P/B): $0.60
+HBNC
+stockholders equity: $721,250,000.00,
+stock price: $14.69,
+shares outstanding: 43663610,
+market cap: $641,418,412.58
+book value / market cap (P/B): $0.89
+PGC
+stockholders equity: $582,379,000.00,
+stock price: $26.26,
+shares outstanding: 17711639,
+market cap: $465,107,644.19
+book value / market cap (P/B): $0.80
+NFBK
+stockholders equity: $698,429,000.00,
+stock price: $11.74,
+shares outstanding: 42367243,
+market cap: $497,391,423.12
+book value / market cap (P/B): $0.71
+FFBC
+stockholders equity: $2,287,003,000.00,
+stock price: $26.01,
+shares outstanding: 94218067,
+market cap: $2,450,611,944.23
+book value / market cap (P/B): $1.07
+UMBF
+stockholders equity: $3,152,816,000.00,
+stock price: $94.71,
+shares outstanding: 48663515,
+market cap: $4,608,921,461.10
+book value / market cap (P/B): $1.46
+CCNE
+stockholders equity: $578,640,000.00,
+stock price: $24.01,
+shares outstanding: 20823766,
+market cap: $499,978,626.43
+book value / market cap (P/B): $0.86
+FNLC
+stockholders equity: $242,624,000.00,
+stock price: $27.35,
+shares outstanding: 11033857,
+market cap: $301,775,993.16
+book value / market cap (P/B): $1.24
+IBCP
+stockholders equity: $415,570,000.00,
+stock price: $31.48,
+shares outstanding: 20877000,
+market cap: $657,207,950.44
+book value / market cap (P/B): $1.58
+VABK
+stockholders equity: $152,577,000.00,
+stock price: $37.02,
+shares outstanding: 5366890,
+market cap: $198,682,270.26
+book value / market cap (P/B): $1.30
+OCFC
+stockholders equity: $1,665,112,000.00,
+stock price: $17.41,
+shares outstanding: 58789000,
+market cap: $1,023,516,481.03
+book value / market cap (P/B): $0.61
+PNFP
+stockholders equity: $6,103,851,000.00,
+stock price: $93.09,
+shares outstanding: 76278453,
+market cap: $7,100,760,910.43
+book value / market cap (P/B): $1.16
+WTFC
+stockholders equity: $5,436,400,000.00,
+stock price: $105.02,
+shares outstanding: 61481000,
+market cap: $6,456,734,413.61
+book value / market cap (P/B): $1.19
+OPHC
+stockholders equity: $83,044,000.00,
+stock price: $4.37,
+shares outstanding: 7616305,
+market cap: $33,283,251.98
+book value / market cap (P/B): $0.40
+THFF
+stockholders equity: $520,766,000.00,
+stock price: $43.51,
+shares outstanding: 11803000,
+market cap: $513,548,510.19
+book value / market cap (P/B): $0.99
+SFBS
+stockholders equity: $1,475,536,000.00,
+stock price: $77.47,
+shares outstanding: 54491019,
+market cap: $4,221,419,308.45
+book value / market cap (P/B): $2.86
+WABC
+stockholders equity: $791,691,000.00,
+stock price: $54.73,
+shares outstanding: 26674000,
+market cap: $1,459,868,007.79
+book value / market cap (P/B): $1.84
+MVBF
+stockholders equity: $291,850,000.00,
+stock price: $22.00,
+shares outstanding: 12810956,
+market cap: $281,841,032.00
+book value / market cap (P/B): $0.97
+WAFD
+stockholders equity: $2,921,906,000.00,
+stock price: $34.41,
+shares outstanding: 70129072,
+market cap: $2,413,141,356.82
+book value / market cap (P/B): $0.83
+HTLF
+stockholders equity: $1,978,833,000.00,
+stock price: $50.83,
+shares outstanding: 42807000,
+market cap: $2,175,879,888.38
+book value / market cap (P/B): $1.10
+FRAF
+stockholders equity: $134,237,000.00,
+stock price: $28.99,
+shares outstanding: 4378000,
+market cap: $126,918,219.00
+book value / market cap (P/B): $0.95
+ESSA
+stockholders equity: $223,540,000.00,
+stock price: $19.70,
+shares outstanding: 9513656,
+market cap: $187,419,030.46
+book value / market cap (P/B): $0.84
+HAFC
+stockholders equity: $703,100,000.00,
+stock price: $19.51,
+shares outstanding: 30119646,
+market cap: $587,634,300.35
+book value / market cap (P/B): $0.84
+SF
+stockholders equity: $4,238,766,000.00,
+stock price: $83.22,
+shares outstanding: 104275000,
+market cap: $8,677,765,627.29
+book value / market cap (P/B): $2.05
+SMBC
+stockholders equity: $479,584,000.00,
+stock price: $48.39,
+shares outstanding: 11301577,
+market cap: $546,883,304.13
+book value / market cap (P/B): $1.14
+FBIZ
+stockholders equity: $297,788,000.00,
+stock price: $40.71,
+shares outstanding: 8125319,
+market cap: $330,781,729.05
+book value / market cap (P/B): $1.11
+JPM
+stockholders equity: $336,637,000,000.00,
+stock price: $209.78,
+shares outstanding: 2908300000,
+market cap: $610,103,170,449.83
+book value / market cap (P/B): $1.81
+AFBI
+stockholders equity: $123,300,000.00,
+stock price: $21.23,
+shares outstanding: 6416628,
+market cap: $136,225,009.50
+book value / market cap (P/B): $1.10
+LBAI
+Error in get_cik_from_symbol
+LPLA
+stockholders equity: $2,269,881,000.00,
+stock price: $211.62,
+shares outstanding: 74562000,
+market cap: $15,778,810,075.93
+book value / market cap (P/B): $6.95
+FXNC
+stockholders equity: $117,816,000.00,
+stock price: $16.23,
+shares outstanding: 6269790,
+market cap: $101,758,688.83
+book value / market cap (P/B): $0.86
+SBFG
+stockholders equity: $124,342,000.00,
+stock price: $15.10,
+shares outstanding: 6829000,
+market cap: $103,117,902.61
+book value / market cap (P/B): $0.83
+HIFS
+Error in get_cik_from_symbol
+HFWA
+stockholders equity: $847,580,000.00,
+stock price: $21.02,
+shares outstanding: 34825471,
+market cap: $732,031,416.36
+book value / market cap (P/B): $0.86
+PPBI
+stockholders equity: $2,902,801,000.00,
+stock price: $27.25,
+shares outstanding: 94350259,
+market cap: $2,571,044,557.75
+book value / market cap (P/B): $0.89
+FVCB
+stockholders equity: $220,661,000.00,
+stock price: $12.06,
+shares outstanding: 17829,
+market cap: $215,017.75
+book value / market cap (P/B): $0.00
+NAVI
+stockholders equity: $2,958,000,000.00,
+stock price: $15.40,
+shares outstanding: 113000000,
+market cap: $1,740,199,956.89
+book value / market cap (P/B): $0.59
+NBHC
+stockholders equity: $1,231,830,000.00,
+stock price: $44.12,
+shares outstanding: 38031358,
+market cap: $1,677,943,474.34
+book value / market cap (P/B): $1.36
+ACNB
+stockholders equity: $279,920,000.00,
+stock price: $40.27,
+shares outstanding: 8493104,
+market cap: $342,017,301.97
+book value / market cap (P/B): $1.22
+INDB
+stockholders equity: $2,884,208,000.00,
+stock price: $58.05,
+shares outstanding: 42553714,
+market cap: $2,470,243,065.23
+book value / market cap (P/B): $0.86
+LARK
+stockholders equity: $126,671,000.00,
+stock price: $19.78,
+shares outstanding: 5469954000,
+market cap: $108,195,693,875.92
+book value / market cap (P/B): $854.15
+PBBK
+stockholders equity: $46,769,000.00,
+stock price: $15.00,
+shares outstanding: 2379237,
+market cap: $35,688,555.00
+book value / market cap (P/B): $0.76
+TCBK
+stockholders equity: $1,163,051,000.00,
+stock price: $44.58,
+shares outstanding: 33245000,
+market cap: $1,482,062,160.87
+book value / market cap (P/B): $1.27
+RJF
+stockholders equity: $10,984,000,000.00,
+stock price: $108.62,
+shares outstanding: 208300000,
+market cap: $22,625,546,572.11
+book value / market cap (P/B): $2.06
+CFFI
+stockholders equity: $216,340,000.00,
+stock price: $48.94,
+shares outstanding: 3370934,
+market cap: $164,973,505.33
+book value / market cap (P/B): $0.76
+HONE
+stockholders equity: $577,683,000.00,
+stock price: $12.60,
+shares outstanding: 41912421,
+market cap: $528,096,520.59
+book value / market cap (P/B): $0.91
+UVSP
+stockholders equity: $843,669,000.00,
+stock price: $26.82,
+shares outstanding: 29433000,
+market cap: $789,393,051.02
+book value / market cap (P/B): $0.94
+VLY
+stockholders equity: $6,727,139,000.00,
+stock price: $8.02,
+shares outstanding: 508340719,
+market cap: $4,076,892,799.08
+book value / market cap (P/B): $0.61
+BSRR
+stockholders equity: $345,094,000.00,
+stock price: $26.46,
+shares outstanding: 14508468,
+market cap: $383,894,050.00
+book value / market cap (P/B): $1.11
+CII
+SRCE
+stockholders equity: $1,009,886,000.00,
+stock price: $59.60,
+shares outstanding: 24459088,
+market cap: $1,457,761,607.48
+book value / market cap (P/B): $1.44
+CAC
+stockholders equity: $501,577,000.00,
+stock price: $37.65,
+shares outstanding: 14572051,
+market cap: $548,637,742.39
+book value / market cap (P/B): $1.09
+MSBI
+stockholders equity: $791,006,000.00,
+stock price: $24.97,
+shares outstanding: 21774647,
+market cap: $543,712,920.64
+book value / market cap (P/B): $0.69
+CNOB
+stockholders equity: $1,216,609,000.00,
+stock price: $22.30,
+shares outstanding: 38319000,
+market cap: $854,513,670.76
+book value / market cap (P/B): $0.70
+MS
+stockholders equity: $99,198,000,000.00,
+stock price: $102.09,
+shares outstanding: 1601000000,
+market cap: $163,446,084,136.96
+book value / market cap (P/B): $1.65
+CZFS
+stockholders equity: $282,674,000.00,
+stock price: $50.43,
+shares outstanding: 4701853,
+market cap: $237,114,448.22
+book value / market cap (P/B): $0.84
+IBKR
+stockholders equity: $3,732,000,000.00,
+stock price: $120.65,
+shares outstanding: 107070830,
+market cap: $12,918,095,802.88
+book value / market cap (P/B): $3.46
+ONB
+stockholders equity: $5,595,408,000.00,
+stock price: $19.44,
+shares outstanding: 290980000,
+market cap: $5,656,651,355.40
+book value / market cap (P/B): $1.01
+FSBC
+stockholders equity: $292,580,000.00,
+stock price: $28.31,
+shares outstanding: 17190867,
+market cap: $486,673,435.59
+book value / market cap (P/B): $1.66
+PEBO
+stockholders equity: $1,062,002,000.00,
+stock price: $32.89,
+shares outstanding: 34740349,
+market cap: $1,142,610,057.41
+book value / market cap (P/B): $1.08
+FHN
+stockholders equity: $8,878,000,000.00,
+stock price: $16.42,
+shares outstanding: 554977000,
+market cap: $9,112,722,382.34
+book value / market cap (P/B): $1.03
+GCBC
+stockholders equity: $199,185,000.00,
+stock price: $33.81,
+shares outstanding: 17026828,
+market cap: $575,677,078.06
+book value / market cap (P/B): $2.89
+FDBC
+stockholders equity: $191,635,000.00,
+stock price: $55.28,
+shares outstanding: 5722232,
+market cap: $316,324,977.97
+book value / market cap (P/B): $1.65
+STEL
+stockholders equity: $1,530,698,000.00,
+stock price: $25.98,
+shares outstanding: 53343000,
+market cap: $1,385,851,115.58
+book value / market cap (P/B): $0.91
+GNTY
+stockholders equity: $305,371,000.00,
+stock price: $33.68,
+shares outstanding: 11539167,
+market cap: $388,639,148.08
+book value / market cap (P/B): $1.27
+MTB
+stockholders equity: $27,169,000,000.00,
+stock price: $165.25,
+shares outstanding: 166460000,
+market cap: $27,507,515,000.00
+book value / market cap (P/B): $1.01
+FMBH
+stockholders equity: $797,952,000.00,
+stock price: $37.25,
+shares outstanding: 23872731,
+market cap: $889,259,229.75
+book value / market cap (P/B): $1.11
+BHB
+stockholders equity: $435,714,000.00,
+stock price: $30.32,
+shares outstanding: 15198337,
+market cap: $460,813,573.20
+book value / market cap (P/B): $1.06
+SFST
+stockholders equity: $315,256,000.00,
+stock price: $35.20,
+shares outstanding: 8110249,
+market cap: $285,480,770.99
+book value / market cap (P/B): $0.91
+FUSB
+FUSB has a KeyError
+PFIS
+PFIS has a KeyError
+FRA
+RBCAA
+stockholders equity: $935,583,000.00,
+stock price: $61.50,
+shares outstanding: 21153000,
+market cap: $1,300,909,500.00
+book value / market cap (P/B): $1.39
+BUSE
+stockholders equity: $1,282,651,000.00,
+stock price: $26.99,
+shares outstanding: 55416589,
+market cap: $1,495,693,724.43
+book value / market cap (P/B): $1.17
+FULT
+stockholders equity: $2,757,679,000.00,
+stock price: $19.55,
+shares outstanding: 162706000,
+market cap: $3,180,902,175.87
+book value / market cap (P/B): $1.15
+FBNC
+stockholders equity: $1,376,099,000.00,
+stock price: $38.15,
+shares outstanding: 40843865,
+market cap: $1,558,193,512.07
+book value / market cap (P/B): $1.13
+COFS
+stockholders equity: $206,756,000.00,
+stock price: $27.48,
+shares outstanding: 7552680,
+market cap: $207,547,642.94
+book value / market cap (P/B): $1.00
+SHBI
+stockholders equity: $515,228,000.00,
+stock price: $13.31,
+shares outstanding: 33189000,
+market cap: $441,745,603.93
+book value / market cap (P/B): $0.86
+NYCB
+stockholders equity: $8,390,000,000.00,
+stock price: $11.18,
+shares outstanding: 740047777,
+market cap: $8,273,734,372.70
+book value / market cap (P/B): $0.99
+MCBS
+stockholders equity: $396,604,000.00,
+stock price: $29.66,
+shares outstanding: 25205506,
+market cap: $747,595,304.11
+book value / market cap (P/B): $1.88
+MCBC
+stockholders equity: $292,973,000.00,
+stock price: $14.63,
+shares outstanding: 34361562,
+market cap: $502,709,655.99
+book value / market cap (P/B): $1.72
+HBT
+stockholders equity: $496,681,000.00,
+stock price: $23.06,
+shares outstanding: 31662954,
+market cap: $730,147,702.33
+book value / market cap (P/B): $1.47
+COF
+stockholders equity: $57,801,000,000.00,
+stock price: $147.27,
+shares outstanding: 382200000,
+market cap: $56,286,595,632.93
+book value / market cap (P/B): $0.97
+SBSI
+stockholders equity: $787,922,000.00,
+stock price: $31.00,
+shares outstanding: 30262000,
+market cap: $938,122,000.00
+book value / market cap (P/B): $1.19
+FNB
+stockholders equity: $6,006,000,000.00,
+stock price: $14.58,
+shares outstanding: 361246402,
+market cap: $5,266,972,513.60
+book value / market cap (P/B): $0.88
+WSFS
+stockholders equity: $2,473,481,000.00,
+stock price: $54.82,
+shares outstanding: 60352200,
+market cap: $3,308,507,585.58
+book value / market cap (P/B): $1.34
+TOWN
+Error in get_cik_from_symbol
+CTBI
+stockholders equity: $707,724,000.00,
+stock price: $49.02,
+shares outstanding: 17926000,
+market cap: $878,732,528.21
+book value / market cap (P/B): $1.24
+GABC
+stockholders equity: $655,254,000.00,
+stock price: $39.25,
+shares outstanding: 29599491,
+market cap: $1,161,780,021.75
+book value / market cap (P/B): $1.77
+SYBT
+stockholders equity: $874,711,000.00,
+stock price: $55.59,
+shares outstanding: 29250000,
+market cap: $1,626,007,504.46
+book value / market cap (P/B): $1.86
+HOMB
+stockholders equity: $3,811,401,000.00,
+stock price: $27.14,
+shares outstanding: 201210000,
+market cap: $5,460,839,277.19
+book value / market cap (P/B): $1.43
+PIPR
+stockholders equity: $1,100,575,000.00,
+stock price: $258.03,
+shares outstanding: 15499000,
+market cap: $3,999,206,951.08
+book value / market cap (P/B): $3.63
+FCCO
+stockholders equity: $133,493,000.00,
+stock price: $20.75,
+shares outstanding: 7601000,
+market cap: $157,720,750.00
+book value / market cap (P/B): $1.18
+SFNC
+stockholders equity: $3,439,126,000.00,
+stock price: $20.75,
+shares outstanding: 125340000,
+market cap: $2,600,805,000.00
+book value / market cap (P/B): $0.76
+FITB
+stockholders equity: $19,018,000,000.00,
+stock price: $40.99,
+shares outstanding: 685749673,
+market cap: $28,108,880,247.28
+book value / market cap (P/B): $1.48
+BANF
+stockholders equity: $1,469,312,000.00,
+stock price: $104.88,
+shares outstanding: 32947983,
+market cap: $3,455,584,366.55
+book value / market cap (P/B): $2.35
+PWOD
+stockholders equity: $172,274,000.00,
+stock price: $22.42,
+shares outstanding: 7512520,
+market cap: $168,430,698.97
+book value / market cap (P/B): $0.98
+TRST
+stockholders equity: $649,190,000.00,
+stock price: $32.59,
+shares outstanding: 19024000,
+market cap: $619,992,162.90
+book value / market cap (P/B): $0.96
+STBA
+stockholders equity: $1,295,074,000.00,
+stock price: $41.21,
+shares outstanding: 38192235,
+market cap: $1,573,901,969.38
+book value / market cap (P/B): $1.22
+FLIC
+stockholders equity: $377,123,000.00,
+stock price: $11.98,
+shares outstanding: 22520568,
+market cap: $269,796,394.33
+book value / market cap (P/B): $0.72
+FCBC
+stockholders equity: $506,944,000.00,
+stock price: $41.50,
+shares outstanding: 18476128,
+market cap: $766,759,312.00
+book value / market cap (P/B): $1.51
+AUB
+stockholders equity: $2,548,928,000.00,
+stock price: $38.93,
+shares outstanding: 75197113,
+market cap: $2,927,423,632.04
+book value / market cap (P/B): $1.15
+FRME
+stockholders equity: $2,224,803,000.00,
+stock price: $38.72,
+shares outstanding: 59066789,
+market cap: $2,287,066,142.18
+book value / market cap (P/B): $1.03
+BOKF
+stockholders equity: $5,128,751,000.00,
+stock price: $103.68,
+shares outstanding: 64290105,
+market cap: $6,665,598,106.02
+book value / market cap (P/B): $1.30
+WASH
+stockholders equity: $466,920,000.00,
+stock price: $30.97,
+shares outstanding: 17033000,
+market cap: $527,511,998.30
+book value / market cap (P/B): $1.13
+BHRB
+stockholders equity: $319,308,000.00,
+stock price: $58.81,
+shares outstanding: 7433481,
+market cap: $437,163,027.82
+book value / market cap (P/B): $1.37
+BSVN
+stockholders equity: $180,382,000.00,
+stock price: $36.93,
+shares outstanding: 9220154,
+market cap: $340,500,290.03
+book value / market cap (P/B): $1.89
+GSBC
+stockholders equity: $565,162,000.00,
+stock price: $61.65,
+shares outstanding: 11767000,
+market cap: $725,435,567.96
+book value / market cap (P/B): $1.28
+FBK
+stockholders equity: $1,479,526,000.00,
+stock price: $45.40,
+shares outstanding: 46874882,
+market cap: $2,128,119,714.33
+book value / market cap (P/B): $1.44
+CPF
+stockholders equity: $507,203,000.00,
+stock price: $24.01,
+shares outstanding: 27046525,
+market cap: $649,387,071.44
+book value / market cap (P/B): $1.28
+LOB
+stockholders equity: $927,718,000.00,
+stock price: $42.24,
+shares outstanding: 44762308,
+market cap: $1,890,759,965.05
+book value / market cap (P/B): $2.04
+FIBK
+stockholders equity: $3,209,700,000.00,
+stock price: $31.16,
+shares outstanding: 102844397,
+market cap: $3,204,631,394.83
+book value / market cap (P/B): $1.00
+LCNB
+stockholders equity: $233,663,000.00,
+stock price: $14.85,
+shares outstanding: 13112302,
+market cap: $194,717,689.70
+book value / market cap (P/B): $0.83
+CATC
+$CATC: possibly delisted; No price data found  (period=1d)
+$CATC: possibly delisted; No price data found  (period=1d)
+Error getting price for CATC.
+RNST
+stockholders equity: $2,322,350,000.00,
+stock price: $35.69,
+shares outstanding: 56208348,
+market cap: $2,006,075,862.93
+book value / market cap (P/B): $0.86
+FFWM
+stockholders equity: $928,734,000.00,
+stock price: $6.57,
+shares outstanding: 56484655,
+market cap: $371,104,193.05
+book value / market cap (P/B): $0.40
+CBFV
+stockholders equity: $141,590,000.00,
+stock price: $23.43,
+shares outstanding: 5129903,
+market cap: $120,193,628.86
+book value / market cap (P/B): $0.85
+SCHW
+stockholders equity: $42,412,000,000.00,
+stock price: $62.08,
+shares outstanding: 1825000000,
+market cap: $113,296,003,341.67
+book value / market cap (P/B): $2.67
+CVBF
+stockholders equity: $2,086,825,000.00,
+stock price: $19.01,
+shares outstanding: 138429000,
+market cap: $2,631,535,321.68
+book value / market cap (P/B): $1.26
+PNC
+stockholders equity: $51,340,000,000.00,
+stock price: $175.51,
+shares outstanding: 400000000,
+market cap: $70,203,997,802.73
+book value / market cap (P/B): $1.37
+TFC
+stockholders equity: $14,792,000,000.00,
+stock price: $42.41,
+shares outstanding: 1335091000,
+market cap: $56,621,209,106.28
+book value / market cap (P/B): $3.83
+OVBC
+stockholders equity: $145,782,000.00,
+stock price: $22.51,
+shares outstanding: 4785773,
+market cap: $107,727,751.33
+book value / market cap (P/B): $0.74
+SSB
+stockholders equity: $5,547,009,000.00,
+stock price: $89.98,
+shares outstanding: 76301000,
+market cap: $6,865,564,236.14
+book value / market cap (P/B): $1.24
+CFR
+stockholders equity: $3,638,180,000.00,
+stock price: $113.68,
+shares outstanding: 64216323,
+market cap: $7,300,111,618.24
+book value / market cap (P/B): $2.01
+STT
+stockholders equity: $24,433,000,000.00,
+stock price: $84.49,
+shares outstanding: 301991000,
+market cap: $25,515,218,944.88
+book value / market cap (P/B): $1.04
+TRMK
+stockholders equity: $1,682,599,000.00,
+stock price: $33.76,
+shares outstanding: 61128000,
+market cap: $2,063,681,177.40
+book value / market cap (P/B): $1.23
+BFC
+stockholders equity: $609,330,000.00,
+stock price: $90.54,
+shares outstanding: 10177932,
+market cap: $921,509,972.60
+book value / market cap (P/B): $1.51
+BK
+stockholders equity: $40,569,000,000.00,
+stock price: $62.69,
+shares outstanding: 756937000,
+market cap: $47,452,379,490.51
+book value / market cap (P/B): $1.17
+CHCO
+stockholders equity: $682,231,000.00,
+stock price: $120.26,
+shares outstanding: 14795000,
+market cap: $1,779,246,731.61
+book value / market cap (P/B): $2.61
+NWFL
+stockholders equity: $181,213,000.00,
+stock price: $27.54,
+shares outstanding: 8064000,
+market cap: $222,082,567.38
+book value / market cap (P/B): $1.23
+USB
+stockholders equity: $55,568,000,000.00,
+stock price: $44.76,
+shares outstanding: 1559000000,
+market cap: $69,780,837,383.27
+book value / market cap (P/B): $1.26
+HOPE
+stockholders equity: $2,112,270,000.00,
+stock price: $12.69,
+shares outstanding: 120187300,
+market cap: $1,525,176,786.57
+book value / market cap (P/B): $0.72
+IBTX
+stockholders equity: $2,400,807,000.00,
+stock price: $54.09,
+shares outstanding: 41205080,
+market cap: $2,228,782,783.49
+book value / market cap (P/B): $0.93
+WTBA
+stockholders equity: $223,756,000.00,
+stock price: $20.41,
+shares outstanding: 16732000,
+market cap: $341,500,117.45
+book value / market cap (P/B): $1.53
+BHLB
+stockholders equity: $1,009,923,000.00,
+stock price: $27.34,
+shares outstanding: 42777000,
+market cap: $1,169,523,186.53
+book value / market cap (P/B): $1.16
+EVBN
+stockholders equity: $174,595,000.00,
+stock price: $31.56,
+shares outstanding: 5507760,
+market cap: $173,824,902.66
+book value / market cap (P/B): $1.00
+TROW
+stockholders equity: $9,784,100,000.00,
+stock price: $114.79,
+shares outstanding: 223600000,
+market cap: $25,667,044,204.71
+book value / market cap (P/B): $2.62
+SBCF
+stockholders equity: $2,117,750,000.00,
+stock price: $27.50,
+shares outstanding: 84908000,
+market cap: $2,334,970,000.00
+book value / market cap (P/B): $1.10
+CBSH
+CBSH has a KeyError
+NWBI
+stockholders equity: $1,552,449,000.00,
+stock price: $13.13,
+shares outstanding: 126814233,
+market cap: $1,665,070,893.80
+book value / market cap (P/B): $1.07
+EVF
+EVF has a KeyError
+HBAN
+stockholders equity: $19,322,000,000.00,
+stock price: $14.86,
+shares outstanding: 1448492000,
+market cap: $21,524,590,622.70
+book value / market cap (P/B): $1.11
+C
+stockholders equity: $206,585,000,000.00,
+stock price: $65.14,
+shares outstanding: 1910400000,
+market cap: $124,443,454,833.98
+book value / market cap (P/B): $0.60
+AROW
+stockholders equity: $377,986,000.00,
+stock price: $29.31,
+shares outstanding: 16865000,
+market cap: $494,313,140.99
+book value / market cap (P/B): $1.31
+SIEB
+stockholders equity: $73,843,000.00,
+stock price: $1.77,
+shares outstanding: 39769398,
+market cap: $70,391,833.70
+book value / market cap (P/B): $0.95
+BGC
+stockholders equity: $912,108,000.00,
+stock price: $9.55,
+shares outstanding: 470517000,
+market cap: $4,493,437,439.74
+book value / market cap (P/B): $4.93
+OPOF
+stockholders equity: $107,630,000.00,
+stock price: $16.89,
+shares outstanding: 5039819,
+market cap: $85,122,539.83
+book value / market cap (P/B): $0.79
+LKFN
+stockholders equity: $646,920,000.00,
+stock price: $67.73,
+shares outstanding: 25657063,
+market cap: $1,737,752,963.12
+book value / market cap (P/B): $2.69
+FRST
+stockholders equity: $382,866,000.00,
+stock price: $12.14,
+shares outstanding: 24642000,
+market cap: $299,153,888.46
+book value / market cap (P/B): $0.78
+BCAL
+stockholders equity: $292,499,000.00,
+stock price: $14.69,
+shares outstanding: 18426848,
+market cap: $270,690,389.39
+book value / market cap (P/B): $0.93
+NEWT
+stockholders equity: $254,132,000.00,
+stock price: $14.38,
+shares outstanding: 24287000,
+market cap: $349,247,062.78
+book value / market cap (P/B): $1.37
+MBCN
+stockholders equity: $205,575,000.00,
+stock price: $25.80,
+shares outstanding: 8091203,
+market cap: $208,753,031.23
+book value / market cap (P/B): $1.02
+UNB
+stockholders equity: $63,820,000.00,
+stock price: $24.90,
+shares outstanding: 4519209,
+market cap: $112,528,302.38
+book value / market cap (P/B): $1.76
+INBK
+stockholders equity: $366,739,000.00,
+stock price: $35.73,
+shares outstanding: 8679429,
+market cap: $310,115,994.20
+book value / market cap (P/B): $0.85
+WSBC
+stockholders equity: $2,538,362,000.00,
+stock price: $32.30,
+shares outstanding: 59382758,
+market cap: $1,918,063,038.09
+book value / market cap (P/B): $0.76
+RMBI
+stockholders equity: $132,390,717.00,
+stock price: $11.81,
+shares outstanding: 11170354,
+market cap: $131,921,885.43
+book value / market cap (P/B): $1.00
+BMRC
+stockholders equity: $436,680,000.00,
+stock price: $20.51,
+shares outstanding: 16081000,
+market cap: $329,821,313.68
+book value / market cap (P/B): $0.76
+FHB
+stockholders equity: $2,513,761,000.00,
+stock price: $24.27,
+shares outstanding: 127707354,
+market cap: $3,099,457,540.04
+book value / market cap (P/B): $1.23
+GS
+stockholders equity: $118,546,000,000.00,
+stock price: $484.93,
+shares outstanding: 335600000,
+market cap: $162,742,505,541.99
+book value / market cap (P/B): $1.37
+WFC
+stockholders equity: $180,943,000,000.00,
+stock price: $59.23,
+shares outstanding: 3560100000,
+market cap: $210,864,721,370.32
+book value / market cap (P/B): $1.17
+ASBA
+stockholders equity: $4,168,673,000.00,
+stock price: $23.66,
+shares outstanding: 149855000,
+market cap: $3,545,569,277.13
+book value / market cap (P/B): $0.85
+BANFP
+stockholders equity: $1,469,312,000.00,
+stock price: $25.79,
+shares outstanding: 32947983,
+market cap: $849,728,511.73
+book value / market cap (P/B): $0.58
+BPOPM
+stockholders equity: $5,177,314,000.00,
+stock price: $25.33,
+shares outstanding: 71869735,
+market cap: $1,820,460,382.07
+book value / market cap (P/B): $0.35
+BWBBP
+stockholders equity: $433,611,000.00,
+stock price: $18.61,
+shares outstanding: 27691401,
+market cap: $515,281,584.32
+book value / market cap (P/B): $1.19
+CCNEP
+stockholders equity: $578,640,000.00,
+stock price: $22.55,
+shares outstanding: 20823766,
+market cap: $469,575,907.41
+book value / market cap (P/B): $0.81
+CNOBP
+stockholders equity: $1,216,609,000.00,
+stock price: $20.65,
+shares outstanding: 38319000,
+market cap: $791,287,335.38
+book value / market cap (P/B): $0.65
+CUBB
+stockholders equity: $1,691,617,000.00,
+stock price: $19.75,
+shares outstanding: 31473424,
+market cap: $621,600,124.00
+book value / market cap (P/B): $0.37
+DCOMP
+stockholders equity: $1,239,371,000.00,
+stock price: $17.63,
+shares outstanding: 38255558,
+market cap: $674,445,455.43
+book value / market cap (P/B): $0.54
+EFSCP
+stockholders equity: $1,731,725,000.00,
+stock price: $19.40,
+shares outstanding: 37490000,
+market cap: $727,305,985.70
+book value / market cap (P/B): $0.42
+FCNCO
+stockholders equity: $21,848,000,000.00,
+stock price: $22.74,
+shares outstanding: 14533302,
+market cap: $330,487,284.15
+book value / market cap (P/B): $0.02
+FCNCP
+stockholders equity: $21,848,000,000.00,
+stock price: $22.83,
+shares outstanding: 14533302,
+market cap: $331,795,283.55
+book value / market cap (P/B): $0.02
+FITBI
+stockholders equity: $19,018,000,000.00,
+stock price: $26.18,
+shares outstanding: 685749673,
+market cap: $17,952,926,648.41
+book value / market cap (P/B): $0.94
+FITBO
+stockholders equity: $19,018,000,000.00,
+stock price: $20.82,
+shares outstanding: 685749673,
+market cap: $14,277,307,982.59
+book value / market cap (P/B): $0.75
+FITBP
+stockholders equity: $19,018,000,000.00,
+stock price: $23.75,
+shares outstanding: 685749673,
+market cap: $16,286,554,733.75
+book value / market cap (P/B): $0.86
+FRMEP
+stockholders equity: $2,224,803,000.00,
+stock price: $25.21,
+shares outstanding: 59066789,
+market cap: $1,489,073,696.61
+book value / market cap (P/B): $0.67
+FULTP
+stockholders equity: $2,757,679,000.00,
+stock price: $18.45,
+shares outstanding: 162706000,
+market cap: $3,001,925,824.13
+book value / market cap (P/B): $1.09
+GJO
+GJP
+GJT
+GREEL
+stockholders equity: -$46,864,000.00,
+stock price: $10.15,
+shares outstanding: 9494000,
+market cap: $96,364,096.38
+book value / market cap (P/B): -$2.06
+HBANL
+stockholders equity: $19,322,000,000.00,
+stock price: $24.92,
+shares outstanding: 1448492000,
+market cap: $36,096,420,750.51
+book value / market cap (P/B): $1.87
+HBANM
+stockholders equity: $19,322,000,000.00,
+stock price: $22.60,
+shares outstanding: 1448492000,
+market cap: $32,743,160,996.93
+book value / market cap (P/B): $1.69
+HBANP
+stockholders equity: $19,322,000,000.00,
+stock price: $18.51,
+shares outstanding: 1448492000,
+market cap: $26,811,587,251.53
+book value / market cap (P/B): $1.39
+HGASW
+$HGASW: possibly delisted; No price data found  (period=1d)
+$HGASW: possibly delisted; No price data found  (period=1d)
+Error getting price for HGASW.
+HTLFP
+stockholders equity: $1,978,833,000.00,
+stock price: $25.30,
+shares outstanding: 42807000,
+market cap: $1,083,017,067.34
+book value / market cap (P/B): $0.55
+HWCPZ
+stockholders equity: $3,853,436,000.00,
+stock price: $23.48,
+shares outstanding: 86521000,
+market cap: $2,031,599,678.89
+book value / market cap (P/B): $0.53
+INBKZ
+stockholders equity: $366,739,000.00,
+stock price: $24.68,
+shares outstanding: 8679429,
+market cap: $214,208,310.37
+book value / market cap (P/B): $0.58
+MBINM
+stockholders equity: $1,776,468,000.00,
+stock price: $25.77,
+shares outstanding: 43305985,
+market cap: $1,115,995,253.27
+book value / market cap (P/B): $0.63
+MBINN
+stockholders equity: $1,776,468,000.00,
+stock price: $21.22,
+shares outstanding: 43305985,
+market cap: $918,952,971.96
+book value / market cap (P/B): $0.52
+MBINO
+stockholders equity: $1,776,468,000.00,
+stock price: $24.82,
+shares outstanding: 43305985,
+market cap: $1,074,854,534.48
+book value / market cap (P/B): $0.61
+MBINP
+Error in get_cik_from_symbol
+MBNKP
+stockholders equity: $349,036,000.00,
+stock price: $25.00,
+shares outstanding: 22641385,
+market cap: $566,034,625.00
+book value / market cap (P/B): $1.62
+MNSBP
+stockholders equity: $223,121,000.00,
+stock price: $22.00,
+shares outstanding: 7611990,
+market cap: $167,463,780.00
+book value / market cap (P/B): $0.75
+MSBIP
+stockholders equity: $791,006,000.00,
+stock price: $25.19,
+shares outstanding: 21774647,
+market cap: $548,503,369.56
+book value / market cap (P/B): $0.69
+NEWTI
+stockholders equity: $254,132,000.00,
+stock price: $25.13,
+shares outstanding: 24287000,
+market cap: $610,380,883.26
+book value / market cap (P/B): $2.40
+NEWTL
+stockholders equity: $254,132,000.00,
+stock price: $24.95,
+shares outstanding: 24287000,
+market cap: $605,960,668.53
+book value / market cap (P/B): $2.38
+NEWTZ
+stockholders equity: $254,132,000.00,
+stock price: $24.09,
+shares outstanding: 24287000,
+market cap: $585,073,833.71
+book value / market cap (P/B): $2.30
+NTRSO
+stockholders equity: $12,101,800,000.00,
+stock price: $21.24,
+shares outstanding: 204628796,
+market cap: $4,346,315,580.20
+book value / market cap (P/B): $0.36
+OCFCP
+stockholders equity: $1,665,112,000.00,
+stock price: $24.98,
+shares outstanding: 58789000,
+market cap: $1,468,549,193.09
+book value / market cap (P/B): $0.88
+ONBPO
+stockholders equity: $5,595,408,000.00,
+stock price: $25.27,
+shares outstanding: 290980000,
+market cap: $7,353,064,733.20
+book value / market cap (P/B): $1.31
+ONBPP
+stockholders equity: $5,595,408,000.00,
+stock price: $25.08,
+shares outstanding: 290980000,
+market cap: $7,297,778,377.80
+book value / market cap (P/B): $1.30
+OZKAP
+PNFPP
+stockholders equity: $6,103,851,000.00,
+stock price: $24.10,
+shares outstanding: 76278453,
+market cap: $1,838,310,746.40
+book value / market cap (P/B): $0.30
+SFB
+stockholders equity: $4,238,766,000.00,
+stock price: $21.91,
+shares outstanding: 104275000,
+market cap: $2,284,248,164.32
+book value / market cap (P/B): $0.54
+TCBIO
+stockholders equity: $3,175,601,000.00,
+stock price: $20.40,
+shares outstanding: 46546243,
+market cap: $949,543,339.44
+book value / market cap (P/B): $0.30
+TECTP
+stockholders equity: $108,452,000.00,
+stock price: $10.39,
+shares outstanding: 7102098,
+market cap: $73,790,800.66
+book value / market cap (P/B): $0.68
+TFINP
+stockholders equity: $874,249,000.00,
+stock price: $21.94,
+shares outstanding: 23274089,
+market cap: $510,633,525.09
+book value / market cap (P/B): $0.58
+UCBIO
+stockholders equity: $3,300,110,000.00,
+stock price: $24.20,
+shares outstanding: 119662000,
+market cap: $2,895,820,491.29
+book value / market cap (P/B): $0.88
+VLYPO
+stockholders equity: $6,727,139,000.00,
+stock price: $23.86,
+shares outstanding: 508340719,
+market cap: $12,129,009,865.61
+book value / market cap (P/B): $1.80
+VLYPP
+stockholders equity: $6,727,139,000.00,
+stock price: $21.88,
+shares outstanding: 508340719,
+market cap: $11,122,494,505.10
+book value / market cap (P/B): $1.65
+WAFDP
+stockholders equity: $2,921,906,000.00,
+stock price: $15.98,
+shares outstanding: 70129072,
+market cap: $1,120,662,538.46
+book value / market cap (P/B): $0.38
+WSBCP
+stockholders equity: $2,538,362,000.00,
+stock price: $25.10,
+shares outstanding: 59382758,
+market cap: $1,490,507,248.45
+book value / market cap (P/B): $0.59
+WTFCM
+stockholders equity: $5,436,400,000.00,
+stock price: $24.23,
+shares outstanding: 61481000,
+market cap: $1,489,684,601.86
+book value / market cap (P/B): $0.27
+WTFCP
+stockholders equity: $5,436,400,000.00,
+stock price: $24.76,
+shares outstanding: 61481000,
+market cap: $1,522,269,574.07
+book value / market cap (P/B): $0.28
+ZIONL
+stockholders equity: $5,829,000,000.00,
+stock price: $25.83,
+shares outstanding: 147338000,
+market cap: $3,805,740,528.76
+book value / market cap (P/B): $0.65
+ZIONO
+stockholders equity: $5,829,000,000.00,
+stock price: $25.57,
+shares outstanding: 147338000,
+market cap: $3,767,432,615.04
+book value / market cap (P/B): $0.65
+ZIONP
+stockholders equity: $5,829,000,000.00,
+stock price: $21.72,
+shares outstanding: 147338000,
+market cap: $3,200,048,896.09
+book value / market cap (P/B): $0.55
+ALLY
+stockholders equity: $13,657,000,000.00,
+stock price: $41.86,
+shares outstanding: 306003000,
+market cap: $12,809,285,766.77
+book value / market cap (P/B): $0.94
+CZNC
+stockholders equity: $261,656,000.00,
+stock price: $19.48,
+shares outstanding: 15230580,
+market cap: $296,691,691.43
+book value / market cap (P/B): $1.13
+VBFC
+stockholders equity: $68,358,000.00,
+stock price: $48.50,
+shares outstanding: 1493000,
+market cap: $72,410,500.00
+book value / market cap (P/B): $1.06
+NKSH
+stockholders equity: $139,390,000.00,
+stock price: $30.76,
+shares outstanding: 5889687,
+market cap: $181,166,773.47
+book value / market cap (P/B): $1.30
+LBC
+Error in get_cik_from_symbol
+USCB
+USCB has a KeyError
+UBSI
+stockholders equity: $4,807,441,000.00,
+stock price: $36.92,
+shares outstanding: 134808634,
+market cap: $4,977,134,520.44
+book value / market cap (P/B): $1.04
+VIRT
+stockholders equity: $1,211,722,000.00,
+stock price: $29.48,
+shares outstanding: 88999122,
+market cap: $2,623,694,075.82
+book value / market cap (P/B): $2.17
+UCBI
+stockholders equity: $3,300,110,000.00,
+stock price: $29.20,
+shares outstanding: 119662000,
+market cap: $3,494,130,491.29
+book value / market cap (P/B): $1.06
+GLBZ
+stockholders equity: $18,129,000.00,
+stock price: $4.63,
+shares outstanding: 2885552,
+market cap: $13,360,106.09
+book value / market cap (P/B): $0.74
+FFIC
+stockholders equity: $669,827,000.00,
+stock price: $15.09,
+shares outstanding: 29650000,
+market cap: $447,418,504.52
+book value / market cap (P/B): $0.67
+CARE
+stockholders equity: $359,066,000.00,
+stock price: $15.98,
+shares outstanding: 22770311,
+market cap: $363,869,559.36
+book value / market cap (P/B): $1.01
+CBU
+stockholders equity: $1,656,955,000.00,
+stock price: $58.65,
+shares outstanding: 53228000,
+market cap: $3,121,822,281.22
+book value / market cap (P/B): $1.88
+PB
+stockholders equity: $7,104,544,000.00,
+stock price: $68.02,
+shares outstanding: 93706000,
+market cap: $6,373,881,805.44
+book value / market cap (P/B): $0.90
+NTRS
+stockholders equity: $12,101,800,000.00,
+stock price: $85.49,
+shares outstanding: 204628796,
+market cap: $17,493,715,332.91
+book value / market cap (P/B): $1.45
+BOH
+stockholders equity: $1,435,977,000.00,
+stock price: $67.29,
+shares outstanding: 39350390,
+market cap: $2,647,887,779.13
+book value / market cap (P/B): $1.84
+KEY
+stockholders equity: $14,547,000,000.00,
+stock price: $15.59,
+shares outstanding: 929692000,
+market cap: $14,493,898,421.86
+book value / market cap (P/B): $1.00
+CWBC
+stockholders equity: $211,717,000.00,
+stock price: $21.00,
+shares outstanding: 11750528,
+market cap: $246,761,088.00
+book value / market cap (P/B): $1.17
+AMTB
+stockholders equity: $738,085,000.00,
+stock price: $25.80,
+shares outstanding: 33538069,
+market cap: $865,282,154.61
+book value / market cap (P/B): $1.17
+SEIC
+SEIC has a KeyError
+ICE
+stockholders equity: $26,239,000,000.00,
+stock price: $147.68,
+shares outstanding: 573000000,
+market cap: $84,620,635,803.22
+book value / market cap (P/B): $3.22
+AMNB
+Error in get_cik_from_symbol
+HTH
+stockholders equity: $2,131,864,000.00,
+stock price: $33.96,
+shares outstanding: 65200000,
+market cap: $2,214,191,940.31
+book value / market cap (P/B): $1.04
+MKTX
+stockholders equity: $1,318,233,000.00,
+stock price: $219.16,
+shares outstanding: 37740000,
+market cap: $8,271,098,538.21
+book value / market cap (P/B): $6.27
+PVBC
+stockholders equity: $227,243,000.00,
+stock price: $11.17,
+shares outstanding: 16669451,
+market cap: $186,197,768.94
+book value / market cap (P/B): $0.82
+FFIN
+stockholders equity: $1,491,367,000.00,
+stock price: $35.69,
+shares outstanding: 142724674,
+market cap: $5,093,843,419.06
+book value / market cap (P/B): $3.42
+ATLO
+stockholders equity: $165,540,000.00,
+stock price: $20.98,
+shares outstanding: 8992167,
+market cap: $188,655,659.54
+book value / market cap (P/B): $1.14
+BLK
+stockholders equity: $39,725,000,000.00,
+stock price: $830.70,
+shares outstanding: 148689172,
+market cap: $123,516,096,995.45
+book value / market cap (P/B): $3.11
+GBCI
+stockholders equity: $3,110,707,000.00,
+stock price: $43.03,
+shares outstanding: 112492142,
+market cap: $4,840,536,732.94
+book value / market cap (P/B): $1.56
+TCBI
+stockholders equity: $3,175,601,000.00,
+stock price: $66.00,
+shares outstanding: 46546243,
+market cap: $3,072,052,038.00
+book value / market cap (P/B): $0.97
+MOFG
+stockholders equity: $528,040,000.00,
+stock price: $26.52,
+shares outstanding: 15722697,
+market cap: $416,965,931.64
+book value / market cap (P/B): $0.79
+HWBK
+stockholders equity: $136,620,000.00,
+stock price: $21.20,
+shares outstanding: 7032171,
+market cap: $149,082,030.57
+book value / market cap (P/B): $1.09
+TW
+stockholders equity: $5,508,793,000.00,
+stock price: $109.40,
+shares outstanding: 212709872,
+market cap: $23,270,460,321.37
+book value / market cap (P/B): $4.22
+ASB
+stockholders equity: $4,168,673,000.00,
+stock price: $22.90,
+shares outstanding: 149855000,
+market cap: $3,431,679,442.83
+book value / market cap (P/B): $0.82
+TFIN
+stockholders equity: $874,249,000.00,
+stock price: $81.03,
+shares outstanding: 23274089,
+market cap: $1,885,899,403.26
+book value / market cap (P/B): $2.16
+PBFS
+stockholders equity: $288,956,000.00,
+stock price: $10.98,
+shares outstanding: 25220299,
+market cap: $276,918,871.48
+book value / market cap (P/B): $0.96
+FFNW
+stockholders equity: $160,183,000.00,
+stock price: $22.02,
+shares outstanding: 9159339,
+market cap: $201,688,648.97
+book value / market cap (P/B): $1.26
+RBKB
+stockholders equity: $114,272,000.00,
+stock price: $8.38,
+shares outstanding: 10748006,
+market cap: $90,068,291.51
+book value / market cap (P/B): $0.79
+WT
+stockholders equity: $423,237,000.00,
+stock price: $10.72,
+shares outstanding: 146464000,
+market cap: $1,570,094,119.11
+book value / market cap (P/B): $3.71
+FNWB
+stockholders equity: $163,340,000.00,
+stock price: $10.25,
+shares outstanding: 8876236,
+market cap: $90,981,419.00
+book value / market cap (P/B): $0.56
+IHT
+stockholders equity: $5,992,774.00,
+stock price: $1.70,
+shares outstanding: 8703337,
+market cap: $14,795,673.32
+book value / market cap (P/B): $2.47
+CEV
+CEV has a KeyError
+EVN
+EVN has a KeyError
+ALRS
+stockholders equity: $371,635,000.00,
+stock price: $21.44,
+shares outstanding: 19739000,
+market cap: $423,204,170.54
+book value / market cap (P/B): $1.14
+CME
+stockholders equity: $27,154,200,000.00,
+stock price: $199.85,
+shares outstanding: 359258000,
+market cap: $71,797,713,492.74
+book value / market cap (P/B): $2.64
+HMST
+stockholders equity: $527,333,000.00,
+stock price: $13.49,
+shares outstanding: 18856870,
+market cap: $254,379,171.98
+book value / market cap (P/B): $0.48
+JEF
+stockholders equity: $9,875,056,000.00,
+stock price: $54.44,
+shares outstanding: 219971000,
+market cap: $11,975,220,937.92
+book value / market cap (P/B): $1.21
+AUBN
+AUBN has a KeyError
+TMP
+stockholders equity: $667,906,000.00,
+stock price: $57.83,
+shares outstanding: 14211910,
+market cap: $821,874,781.32
+book value / market cap (P/B): $1.23
+EQBK
+stockholders equity: $456,776,000.00,
+stock price: $39.79,
+shares outstanding: 15425709,
+market cap: $613,788,975.23
+book value / market cap (P/B): $1.34
+CFSB
+stockholders equity: $75,862,000.00,
+stock price: $6.75,
+shares outstanding: 6292060,
+market cap: $42,471,405.00
+book value / market cap (P/B): $0.56
+AC
+stockholders equity: $916,850,000.00,
+stock price: $32.87,
+shares outstanding: 21500,
+market cap: $706,704.98
+book value / market cap (P/B): $0.00
+TCBC
+stockholders equity: $77,839,378.00,
+stock price: $13.82,
+shares outstanding: 4361088,
+market cap: $60,270,234.83
+book value / market cap (P/B): $0.77
+MUI
+MUI has a KeyError
+CADE
+CIFR
+stockholders equity: $600,924,000.00,
+stock price: $6.19,
+shares outstanding: 296641499,
+market cap: $1,836,210,895.78
+book value / market cap (P/B): $3.06
+CIFRW
+stockholders equity: $600,924,000.00,
+stock price: $1.95,
+shares outstanding: 296641499,
+market cap: $578,450,937.19
+book value / market cap (P/B): $0.96
+ECBK
+stockholders equity: $165,789,000.00,
+stock price: $12.91,
+shares outstanding: 8299775,
+market cap: $107,150,093.98
+book value / market cap (P/B): $0.65
+MYI
+NBTB
+stockholders equity: $1,441,415,000.00,
+stock price: $45.22,
+shares outstanding: 47148000,
+market cap: $2,132,032,617.55
+book value / market cap (P/B): $1.48
+NDAQ
+stockholders equity: $10,809,000,000.00,
+stock price: $62.51,
+shares outstanding: 575451665,
+market cap: $35,971,482,613.27
+book value / market cap (P/B): $3.33
+PEBK
+stockholders equity: $121,092,000.00,
+stock price: $31.52,
+shares outstanding: 5318671000,
+market cap: $167,644,512,354.69
+book value / market cap (P/B): $1,384.44
+PRK
+PRK has a KeyError
+SASR
+stockholders equity: $1,589,364,000.00,
+stock price: $29.41,
+shares outstanding: 44990000,
+market cap: $1,323,155,893.14
+book value / market cap (P/B): $0.83
+TCBS
+stockholders equity: $51,471,000.00,
+stock price: $14.25,
+shares outstanding: 2970273,
+market cap: $42,326,390.25
+book value / market cap (P/B): $0.82
+MUJ
+MUJ has a KeyError
+MC
+MC has a KeyError
+OLO
+stockholders equity: $646,443,000.00,
+stock price: $4.77,
+shares outstanding: 162320759,
+market cap: $774,270,017.33
+book value / market cap (P/B): $1.20
+MQY
+MUC
+MUC has a KeyError
+MUE
+MYD
+MQT
+MVT
+BLFY
+stockholders equity: $350,156,000.00,
+stock price: $10.66,
+shares outstanding: 22095260,
+market cap: $235,535,468.23
+book value / market cap (P/B): $0.67
+HGAS
+HGAS has a KeyError
+MHD
+SDIG
+stockholders equity: $61,971,197.00,
+stock price: $4.07,
+shares outstanding: 13989820,
+market cap: $56,938,569.80
+book value / market cap (P/B): $0.92
+MUA
+MUA has a KeyError
+USIO
+stockholders equity: $15,273,100.00,
+stock price: $1.59,
+shares outstanding: 26375762,
+market cap: $41,937,462.46
+book value / market cap (P/B): $2.75
+BKT
+BKT has a KeyError
+MHN
+APLD
+stockholders equity: $118,488,000.00,
+stock price: $5.72,
+shares outstanding: 121426622,
+market cap: $694,560,252.36
+book value / market cap (P/B): $5.86
+MVF
+ASRV
+stockholders equity: $103,933,000.00,
+stock price: $2.57,
+shares outstanding: 17147000,
+market cap: $44,067,788.86
+book value / market cap (P/B): $0.42
+MIY
+BCOW
+stockholders equity: $71,510,000.00,
+stock price: $8.83,
+shares outstanding: 5467653,
+market cap: $48,279,375.57
+book value / market cap (P/B): $0.68
+GBNY
+stockholders equity: $36,905,000.00,
+stock price: $10.50,
+shares outstanding: 2138000,
+market cap: $22,449,000.00
+book value / market cap (P/B): $0.61
+PNBK
+stockholders equity: $43,637,000.00,
+stock price: $1.90,
+shares outstanding: 3976073,
+market cap: $7,554,538.61
+book value / market cap (P/B): $0.17
+WULF
+stockholders equity: $272,343,000.00,
+stock price: $5.59,
+shares outstanding: 290602725,
+market cap: $1,624,469,277.09
+book value / market cap (P/B): $5.96
+BANC
+stockholders equity: $3,394,150,000.00,
+stock price: $14.39,
+shares outstanding: 168143000,
+market cap: $2,419,577,827.73
+book value / market cap (P/B): $0.71
+BRBS
+stockholders equity: $248,793,000.00,
+stock price: $2.93,
+shares outstanding: 19178332,
+market cap: $56,192,514.04
+book value / market cap (P/B): $0.23
+COHN
+stockholders equity: $43,753,000.00,
+stock price: $9.56,
+shares outstanding: 1581390,
+market cap: $15,118,089.06
+book value / market cap (P/B): $0.35
+GREE
+stockholders equity: -$46,864,000.00,
+stock price: $3.14,
+shares outstanding: 9494000,
+market cap: $29,811,161.00
+book value / market cap (P/B): -$0.64
+Results saved to bank_analysis.csv
+
+Process finished with exit code 0

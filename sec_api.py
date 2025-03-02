@@ -175,7 +175,7 @@ def main(cik: str = None, ticker: str = None):
     #         category = company_facts['facts']['us-gaap'][key]['units']['USD']
     #         for dictionary in category:
     #
-    #             if dictionary['form'] == '10-K' and dictionary['fy'] == 2022:  # change the date here
+    #             if dictionary['form'] == '10-K' and dictionary['fy'] == 2020:  # change the date here
     #                 print(dictionary)
     #
     #                 print(key, dictionary['val'])
@@ -183,7 +183,7 @@ def main(cik: str = None, ticker: str = None):
     #         print(f"key error for {key}")
     # return
 
-    net_income_10k = get_10k_values_with_alternate_keys(company_facts, ['NetIncomeLoss', 'ProfitLoss'])
+    net_income_10k = get_10k_values_with_alternate_keys(company_facts, ['ProfitLoss'])
     print("net_income_10k", net_income_10k)
     # Get cash flow from operations.
     cash_flow_operations_10k = get_10k_values_operating_cf(company_facts, 'NetCashProvidedByUsedInOperatingActivities')
@@ -270,9 +270,6 @@ def main(cik: str = None, ticker: str = None):
     for i in range(len(fiscal_periods_capex)):
         print("capex:", fiscal_periods_capex[i], capex_values[i])
 
-    for i in range(len(fiscal_periods_cf)):
-        print("operating cash flows", fiscal_periods_cf[i], cash_flow_values[i])
-
     for i in range(len(fiscal_periods_acq)):
         print("acquisitions:", fiscal_periods_acq[i], acq_values[i])
 
@@ -311,8 +308,8 @@ def main(cik: str = None, ticker: str = None):
     # plt.plot(fiscal_periods_capex, capex_values, marker='o', linestyle='-', color='#33FF33',
     #          label='Capital Expenditures')
 
-    # plt.plot(fiscal_periods_stockholders_equity, stockholders_equity_values, marker='o', linestyle='-', color='#FFC0CB',
-    #          label='Stockholders Equity')
+    plt.plot(fiscal_periods_stockholders_equity, stockholders_equity_values, marker='o', linestyle='-', color='#FFC0CB',
+             label='Stockholders Equity')
 
     # Plot cash flow from operations
     plt.plot(fiscal_periods_cf, cash_flow_values, marker='o', linestyle='-', color='b',
@@ -325,13 +322,13 @@ def main(cik: str = None, ticker: str = None):
     plt.gca().yaxis.set_major_formatter(FuncFormatter(lambda x, _: f'${x / 1e6:.0f}M'))
 
     # Plot acquisitions
-    plt.plot(fiscal_periods_acq, acq_values, marker='o', linestyle='-', color='g', label='Acquisitions')
+    # plt.plot(fiscal_periods_acq, acq_values, marker='o', linestyle='-', color='g', label='Acquisitions')
 
     # plt.plot(fiscal_periods_debt, debt_values, marker='o', linestyle='-', color='#FF0000', label='Long-term Debt')
 
     plt.plot(fiscal_periods_revenue, revenue_values, marker='o', linestyle='-', color='#F1C646', label='Revenue')
 
-    plt.plot(fiscal_periods_stock_repurchases, stock_repurchases_values, marker='o', linestyle='-', color='#00FFFF', label='Stock Buybacks')
+    # plt.plot(fiscal_periods_stock_repurchases, stock_repurchases_values, marker='o', linestyle='-', color='#00FFFF', label='Stock Buybacks')
 
     plt.title(f'Financial Data for {ticker} (10-K)')
     plt.xlabel('Fiscal Period')
@@ -345,7 +342,7 @@ def main(cik: str = None, ticker: str = None):
 
 
 if __name__ == "__main__":
-    TICKER = 'BRBR'.upper()
+    TICKER = 'AMCX'.upper()
     cik_value = get_cik_from_symbol(TICKER, add_zeroes=True)
     print(cik_value)
     main(cik_value, ticker=TICKER)

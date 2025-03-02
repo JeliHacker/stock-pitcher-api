@@ -3,6 +3,11 @@ import requests
 import pandas as pd
 import yfinance as yf
 import locale
+import time
+from datetime import datetime
+
+
+TODAYS_DATE = datetime.today().strftime("%m_%d_%Y")
 
 # TODO : fix bug where some shares outstanding don't have the last three zeros
 # i.e. shares outstanding is 17829 when it should be 17829000
@@ -47,6 +52,7 @@ def analyze_banks():
                 f'https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json',
                 headers=HEADERS
             )
+            time.sleep(0.11)
             if company_facts.status_code == 404:
                 continue
             company_facts = company_facts.json()
@@ -79,8 +85,8 @@ def analyze_banks():
 
     # Save results to CSV
     results_df = pd.DataFrame(results)
-    results_df.to_csv('bank_analysis.csv', index=False)
-    print("Results saved to bank_analysis.csv")
+    results_df.to_csv(f'bank_analysis_{TODAYS_DATE}.csv', index=False)
+    print(f"Results saved to bank_analysis_{TODAYS_DATE}.csv")
 
 
 analyze_banks()

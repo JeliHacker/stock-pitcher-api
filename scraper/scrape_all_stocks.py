@@ -13,12 +13,11 @@ import time
 import requests
 import logging
 import os
+import platform
 
 
 def create_driver():
     options = Options()
-
-    # options.add_argument('--headless=new')
 
     # Avoid detection as a bot
     options.add_argument("--disable-blink-features=AutomationControlled")
@@ -28,10 +27,32 @@ def create_driver():
     options.add_argument(f'user-agent={user_agent}')
 
     # Essential flags for headless mode and stability
+    options.add_argument('--headless=new')
     options.add_argument("--no-sandbox")  # Prevent sandbox issues (Linux)
     options.add_argument("--disable-dev-shm-usage")  # Fix crashes in headless mode
     options.add_argument("--disable-gpu")  # Helps on some headless setups
     options.add_argument("--window-size=1920x1080")  # Ensures elements are fully loaded
+
+    downloads_folder = '/Users/eligooch/Downloads'
+
+    # 🛠️ Set Chromium binary path dynamically based on OS
+    if platform.system() == "Darwin":  # macOS
+        options.binary_location = "/Applications/Chromium.app/Contents/MacOS/Chromium"
+    elif platform.system() == "Linux":  # VPS (Linux)
+        options.binary_location = "/usr/bin/chromium-browser"
+        downloads_folder = '/home/mynewuser'
+    else:
+        raise Exception("Unsupported OS. Install Chromium manually.")
+
+    # Configure Chromium to auto-download files without confirmation
+    prefs = {
+        "download.default_directory": downloads_folder,  # Set the default download folder
+        "download.prompt_for_download": False,  # Disable the "Save As" dialog
+        "download.directory_upgrade": True,
+        "safebrowsing.enabled": True,  # Avoids warning prompts
+        "safebrowsing.disable_download_protection": True,  # Allows auto-downloading
+    }
+    options.add_experimental_option("prefs", prefs)
 
     # Get the correct ChromeDriver path
     chrome_driver_dir = ChromeDriverManager().install()
@@ -206,4 +227,5 @@ def scrape_all_stocks(input_file) -> bool:
 
 
 if __name__ == "__main__":
+    print(platform.system())
     print("scrape_all_stocks.py")

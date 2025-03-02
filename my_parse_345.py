@@ -4,6 +4,7 @@ import requests
 import re
 import numpy as np
 from sec_api import HEADERS, get_symbol_from_cik
+import os
 
 
 def clean_currency(value, safe_mode=True):
@@ -80,14 +81,13 @@ def parse_345(link: str, cik, filing_date=None):
 
     buying_rows = []
     for row in rows:
+
         columns = row.find_all("td")
         if len(columns) > 10:
             try:
                 amount_of_shares = float(columns[5].text.strip().replace(",", ""))
             except ValueError:
                 continue
-
-            print("link:", link)
 
             # Date that comes straight from the form
             security_type = columns[0].text.strip()
@@ -123,7 +123,6 @@ def parse_345(link: str, cik, filing_date=None):
 
                 money_invested = amount_of_shares * stock_price
 
-                print("columns:", len(columns), type(columns), type(columns[0]))
                 with open("data.txt", "w") as file:
                     i = 0
                     for column in columns:
@@ -137,7 +136,7 @@ def parse_345(link: str, cik, filing_date=None):
                 print(f"Someone is buying! {reformat_name(filer)}, at a price of {stock_price}, on {filing_date} {link}")
                 buying_rows.append(row)
                 form_data = {
-                    'Ticker': get_symbol_from_cik(cik),
+                    'Ticker': get_symbol_from_cik(cik.lstrip("0"), csv_file_path='../all_tickers.csv'),
                     'Date': transaction_date,
                     'Reporting Person': reformat_name(filer),
                     'Shares Bought': amount_of_shares,

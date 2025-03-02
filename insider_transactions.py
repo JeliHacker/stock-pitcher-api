@@ -1,17 +1,33 @@
 import requests
+import sys
+import os
 import pandas as pd
-from sec_api import HEADERS, get_cik_from_symbol, get_sp500_stocks, get_symbol_from_cik
+from sec_api import (HEADERS, get_cik_from_symbol, get_sp500_stocks,
+                     get_symbol_from_cik, get_all_tickers)
 from my_parse_345 import parse_345
 import time
 from datetime import datetime
+import json
+
+
+# Append the parent directory to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '')))
+get_all_tickers()
+
+current_date = datetime.now().strftime('%Y-%m-%d')
 
 
 # Define the function to get insider transactions
-def get_insider_transactions(cik):
+def get_insider_transactions(cik, to_date='2020-01-01'):
     """Get insider transactions for a single stock given a CIK number.
-    This function doesn't do a whole lot, most of the work is in my_parse_345.py."""
+    This function doesn't do a whole lot, most of the work is in my_parse_345.py.
+    :param cik
+    :param to_date"""
 
-    print(f"Getting insider transactions for {get_symbol_from_cik(cik)}")
+    # remove the leading zeroes so the sym_so
+    cik_remove_leading_zeroes = cik.lstrip("0")
+    print(f"Getting insider transactions for {get_symbol_from_cik(cik_remove_leading_zeroes, '../all_tickers.csv')}, "
+          f"going back to date {to_date}")
     url = f'https://data.sec.gov/submissions/CIK{cik}.json'
     response = requests.get(url, headers=HEADERS)
     if response.status_code != 200:
@@ -37,8 +53,12 @@ def get_insider_transactions(cik):
         filing_url = f'https://www.sec.gov/Archives/edgar/data/{cik}/{form["accessionNumber"].replace("-", "")}/{form["primaryDocument"]}'
 
         # only get transactions going back to January 1st, 2020
-        if datetime.strptime(form['filingDate'], '%Y-%m-%d') < datetime.strptime('2020-01-01', '%Y-%m-%d'):
+        if datetime.strptime(form['filingDate'], '%Y-%m-%d') < datetime.strptime(to_date, '%Y-%m-%d'):
+            print(f"{datetime.strptime(form['filingDate'], '%Y-%m-%d')} is less than {datetime.strptime(to_date, '%Y-%m-%d')}")
             break
+        else:
+            print(
+                f"{datetime.strptime(form['filingDate'], '%Y-%m-%d')} is > or equal to {datetime.strptime(to_date, '%Y-%m-%d')}")
 
         # stay within SEC API rate limits (10 requests per second) ** citation needed **
         time.sleep(0.11)
@@ -68,13 +88,48 @@ def iterate_through_database(input_file):
 
 # Main function to run the script
 if __name__ == "__main__":
-    # cik = get_cik_from_symbol('VFC', add_zeroes=True)
-    # transactions_df = get_insider_transactions(cik)
+    # sp500_stocks = get_sp500_stocks()
+    # try:
+    #     with open('sp500_list.json', 'r') as file:
+    #         old_list = json.load(file)
+    #         if old_list != sp500_stocks:
+    #             print("There's been an update to the S&P 500!")
+    # except FileNotFoundError:
+    #     print("No existing sp500_list.json file.")
+    #
+    # if os.path.exists('insider_buying.xlsx'):
+    #     df = pd.read_excel('insider_buying.xlsx')
+    # else:
+    #     df = pd.DataFrame()
+    #
+    # with open('sp500_list_seen.json', 'r') as file:
+    #     seen_stocks = json.load(file)
+    #     print("type(seen_stocks)", type(seen_stocks))
+    #
+    # count = 0
+    # for stock in seen_stocks:
+    #     print(stock)
+    #     if 'Last Scraped' in stock and stock['Last Scraped'] == current_date:
+    #         print(f"This stock, {stock['Symbol']}, has been scraped before!")
+    #         if stock['Last Scraped'] == current_date:
+    #             print(f"skipping {stock['Symbol']} because we scraped it today, {stock['Last Scraped']}.")
+    #
+    #         continue
+    #
+    #     new_df = get_insider_transactions(cik=get_cik_from_symbol(stock['Symbol'], add_zeroes=True),
+    #                                       to_date=stock.get('Last Scraped', '2020-01-01'))
+    #     df = pd.concat([df, new_df], ignore_index=True)
+    #     df.to_excel('insider_buying.xlsx', index=False)
+    #
+    #     stock['Last Scraped'] = current_date
+    #     count += 1
+    #
+    #     if count > 5:
+    #         break
 
-    sp500_stocks = get_sp500_stocks()
-    df = pd.DataFrame()
-    for stock in sp500_stocks:
-        new_df = get_insider_transactions(get_cik_from_symbol(stock['Symbol'], add_zeroes=True))
-        df = pd.concat([df, new_df], ignore_index=True)
+    # with open("sp500_list_seen.json", 'w') as file:
+    #     json.dump(seen_stocks, file, indent=4)
 
-    df.to_excel('insider_buying.xlsx', index=False)
+    df = get_insider_transactions(cik=get_cik_from_symbol("AMCX", add_zeroes=True), to_date='2022-01-01')
+
+    df.to_excel('amcx_insider_buying.xlsx', index=False)

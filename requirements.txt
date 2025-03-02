@@ -147,7 +147,7 @@ Pygments==2.17.2
 pylint==3.2.5
 pylint-venv==3.0.3
 pyls-spyder==0.4.0
-pyobjc-core==10.3.1
+pyobjc-core==10.3.1; sys_platform == "darwin"
 pyobjc-framework-Cocoa==10.3.1
 pyobjc-framework-CoreServices==10.3.1
 pyobjc-framework-FSEvents==10.3.1

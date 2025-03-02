@@ -22,6 +22,7 @@ jobs:
           cd stockpitcherapi
           git pull
           source venv/bin/activate
+          pip install --upgrade pip
           pip install -r requirements.txt
           rm -rf instance/stocks.db
           flask import-data all_stocks_data.csv

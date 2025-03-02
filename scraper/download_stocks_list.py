@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 import pandas as pd
 import time
-from scraper.scrape_all_stocks import create_driver
+from scrape_all_stocks import create_driver
 import shutil
 import os
 from glob import glob
@@ -19,15 +19,15 @@ def download_nasdaq_list(filename: str):
     driver.get("https://www.nasdaq.com/market-activity/stocks/screener")
     time.sleep(5)
     driver.get_screenshot_as_file("screenshot.png")
-    download_button = driver.find_element(By.CLASS_NAME, 'nasdaq-screener__form-button--download')
+    download_button = driver.find_element(By.CLASS_NAME, 'jupiter22-c-table__download-csv')
     download_button.click()
     time.sleep(5)
 
     # Path to your Downloads folder
     downloads_folder = '/Users/eligooch/Downloads'
 
-    # Path to your project directory
-    project_directory = '/Users/eligooch/Desktop/git/stock_pitcher_api'
+    # Path to current directory
+    project_directory = os.getcwd()
 
     # List all files in the Downloads folder
     files = glob(os.path.join(downloads_folder, '*'))

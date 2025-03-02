@@ -12,18 +12,39 @@ import numpy as np
 import time
 import requests
 import logging
+import os
 
 
 def create_driver():
     options = Options()
-    options.add_argument('--headless=new')
+
+    # options.add_argument('--headless=new')
+
+    # Avoid detection as a bot
+    options.add_argument("--disable-blink-features=AutomationControlled")
 
     # https://stackoverflow.com/questions/47316810/unable-to-locate-elements-on-webpage-with-headless-chrome
     user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
     options.add_argument(f'user-agent={user_agent}')
 
-    service = Service(ChromeDriverManager().install())
+    # Essential flags for headless mode and stability
+    options.add_argument("--no-sandbox")  # Prevent sandbox issues (Linux)
+    options.add_argument("--disable-dev-shm-usage")  # Fix crashes in headless mode
+    options.add_argument("--disable-gpu")  # Helps on some headless setups
+    options.add_argument("--window-size=1920x1080")  # Ensures elements are fully loaded
+
+    # Get the correct ChromeDriver path
+    chrome_driver_dir = ChromeDriverManager().install()
+
+    # Correct the path by replacing the incorrect file with actual binary
+    if "THIRD_PARTY_NOTICES.chromedriver" in chrome_driver_dir:
+        chrome_driver_dir = os.path.dirname(chrome_driver_dir) + "/chromedriver"
+
+    print("Using ChromeDriver path:", chrome_driver_dir)
+
+    service = Service(chrome_driver_dir)
     driver = webdriver.Chrome(service=service, options=options)
+
     return driver
 
 
@@ -155,6 +176,7 @@ def scrape_all_stocks(input_file) -> bool:
 
             data = scrape_data(driver, row['Symbol'])
             print(f"{row['Symbol']}: {data}, stocks processed: {processed_count}")
+            logging.info(f"{row['Symbol']}: {data}, stocks processed: {processed_count}")
             if data:
                 mos = data[0]
                 if mos == 'N/A':
@@ -174,7 +196,7 @@ def scrape_all_stocks(input_file) -> bool:
 
             processed_count += 1
 
-            if processed_count >= 50:
+            if processed_count >= 10:
                 finished = False
                 break
     finally:

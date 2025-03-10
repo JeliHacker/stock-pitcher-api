@@ -40,7 +40,7 @@ def create_driver():
         options.binary_location = "/Applications/Chromium.app/Contents/MacOS/Chromium"
     elif platform.system() == "Linux":  # VPS (Linux)
         options.binary_location = "/usr/bin/chromium-browser"
-        downloads_folder = '/home/mynewuser'
+        downloads_folder = os.getenv('DOWNLOADS_FOLDER', os.path.expanduser('~/Downloads'))
     else:
         raise Exception("Unsupported OS. Install Chromium manually.")
 

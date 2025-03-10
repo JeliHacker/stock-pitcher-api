@@ -5,6 +5,7 @@ from scraper.scrape_all_stocks import create_driver
 import shutil
 import os
 from glob import glob
+import logging
 
 
 def download_nasdaq_list(filename: str):
@@ -23,8 +24,8 @@ def download_nasdaq_list(filename: str):
     download_button.click()
     time.sleep(5)
 
-    # Path to your Downloads folder
-    downloads_folder = '/Users/eligooch/Downloads'
+    # Use an environment variable if set, otherwise default to the user's Downloads folder
+    downloads_folder = os.getenv('DOWNLOADS_FOLDER', os.path.expanduser('~/Downloads'))
 
     # Path to current directory
     project_directory = os.getcwd()
@@ -35,11 +36,20 @@ def download_nasdaq_list(filename: str):
     # Find the most recently downloaded file (based on modification time)
     latest_file = max(files, key=os.path.getmtime)
 
+    # Define destination directory (for example, an "archive" folder inside the project)
+    destination_dir = os.path.join(project_directory, "archive")
+    # Ensure the destination directory exists
+    os.makedirs(destination_dir, exist_ok=True)
+    logging.info(f"project_directory/archive: {project_directory}/archive")
+
+    # Construct the destination path. Here we assume 'filename' does NOT include a path.
+    destination_path = os.path.join(destination_dir, f"{filename}.csv")
+
     # Move the most recently downloaded file to your project directory
-    shutil.move(latest_file, os.path.join(project_directory, f"{filename}.csv"))
+    shutil.move(latest_file, os.path.join(f"{project_directory}", f"{filename}.csv"))
 
     df = pd.read_csv(f"{filename}.csv")
-
     excel_file_path = f"{filename}.xlsx"
     print(f"excel_file_path = {excel_file_path}")
+    logging.info(f"excel_file_path = {excel_file_path}")
     df.to_excel(excel_file_path, index=False, engine="openpyxl", sheet_name="Stocks")

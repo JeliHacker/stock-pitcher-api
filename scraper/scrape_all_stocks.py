@@ -71,7 +71,7 @@ def create_driver():
 
 def scrape_data(driver, ticker: str):
     """
-    This scrapes data for each row.
+    This scrapes data from Gurufocus for each row.
     :param driver: the selenium webdriver
     :param ticker: the company's ticker symbol
     :return: a list [margin of safety, fair value, predictability stars]
@@ -164,7 +164,7 @@ def scrape_all_stocks(input_file) -> bool:
     Writes to the stocks list (which is the input file), adding 3 columns relating to fair value,
     based on data scraped from Gurufocus.
     :param input_file: Which file to read and write. This should be the relevant stocks list.
-    :return: boolean
+    :return: boolean: True if it got info for all the stocks in the Excel sheet
     """
 
     # Load the DataFrame
@@ -219,6 +219,9 @@ def scrape_all_stocks(input_file) -> bool:
 
             if processed_count >= 10:
                 finished = False
+                print("trying to copy to Excel", input_file)
+                logging.info(f"trying to copy to Excel {input_file}")
+                df.to_excel(f"{input_file}", sheet_name='Stocks', index=False)
                 break
     finally:
         driver.quit()

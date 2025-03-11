@@ -1,11 +1,6 @@
-from selenium.webdriver.common.by import By
 import pandas as pd
-import time
-from scraper.scrape_all_stocks import create_driver
-import shutil
-import os
-from glob import glob
 import logging
+import requests
 
 
 def download_nasdaq_list(filename: str):
@@ -15,41 +10,42 @@ def download_nasdaq_list(filename: str):
     :param filename: What to name the list of stocks files (e.g. "stocks_list.csv")
     :return:
     """
+    print("download_nasdaq_list()")
+    # API endpoint
+    api_url = "https://api.nasdaq.com/api/screener/stocks?limit=50&tableonly=true&download=true"
 
-    driver = create_driver()
-    driver.get("https://www.nasdaq.com/market-activity/stocks/screener")
-    time.sleep(5)
-    driver.get_screenshot_as_file("screenshot.png")
-    download_button = driver.find_element(By.CLASS_NAME, 'jupiter22-c-table__download-csv')
-    download_button.click()
-    time.sleep(5)
+    # Nasdaq often expects certain headers. These mimic a typical browser request.
+    headers = {
+        "User-Agent": "Mozilla/5.0"
+    }
 
-    # Use an environment variable if set, otherwise default to the user's Downloads folder
-    downloads_folder = os.getenv('DOWNLOADS_FOLDER', os.path.expanduser('~/Downloads'))
+    # Fetch data from the API
+    response = requests.get(api_url, headers=headers, timeout=15)
+    response.raise_for_status()  # Raise an error for a bad status code
+    json_data = response.json()
 
-    # Path to current directory
-    project_directory = os.getcwd()
+    # Ensure we got the expected data structure
+    if "data" not in json_data:
+        raise ValueError("Unexpected API response: missing 'data' key")
 
-    # List all files in the Downloads folder
-    files = glob(os.path.join(downloads_folder, '*'))
+    # Extract the rows of stocks
+    rows = json_data["data"].get("rows", [])
+    if not rows:
+        raise ValueError("No stock data found in API response")
 
-    # Find the most recently downloaded file (based on modification time)
-    latest_file = max(files, key=os.path.getmtime)
+    # Create a DataFrame from the rows
+    df = pd.DataFrame(rows)
 
-    # Define destination directory (for example, an "archive" folder inside the project)
-    destination_dir = os.path.join(project_directory, "archive")
-    # Ensure the destination directory exists
-    os.makedirs(destination_dir, exist_ok=True)
-    logging.info(f"project_directory/archive: {project_directory}/archive")
+    # Define output file names
+    csv_file = f"{filename}.csv"
+    excel_file = f"{filename}.xlsx"
 
-    # Construct the destination path. Here we assume 'filename' does NOT include a path.
-    destination_path = os.path.join(destination_dir, f"{filename}.csv")
+    # Save DataFrame to CSV
+    df.to_csv(csv_file, index=False)
+    logging.info(f"Saved CSV to {csv_file}")
 
-    # Move the most recently downloaded file to your project directory
-    shutil.move(latest_file, os.path.join(f"{project_directory}", f"{filename}.csv"))
+    # Save DataFrame to Excel
+    df.to_excel(excel_file, index=False, engine="openpyxl", sheet_name="Stocks")
+    logging.info(f"Saved Excel to {excel_file}")
 
-    df = pd.read_csv(f"{filename}.csv")
-    excel_file_path = f"{filename}.xlsx"
-    print(f"excel_file_path = {excel_file_path}")
-    logging.info(f"excel_file_path = {excel_file_path}")
-    df.to_excel(excel_file_path, index=False, engine="openpyxl", sheet_name="Stocks")
+    print(f"Successfully saved CSV to {csv_file} and Excel to {excel_file}")

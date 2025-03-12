@@ -68,11 +68,12 @@ def create_driver():
 
 def scrape_data(driver, ticker: str):
     """
-    This scrapes data from Gurufocus for each row.
+    This scrapes data from Gurufocus for each row. This is a subfunction to scrape_all_stocks.
     :param driver: the selenium webdriver
     :param ticker: the company's ticker symbol
     :return: a list [margin of safety, fair value, predictability stars]
     """
+    print(f"scrape_data({ticker})")
     driver.get(f"https://www.gurufocus.com/stock/{ticker}/dcf")
 
     # Wait for the page to load sufficiently
@@ -192,7 +193,30 @@ def scrape_all_stocks(input_file) -> bool:
             if pd.notna(row['Fair Value']):
                 continue
 
-            data = scrape_data(driver, row['Symbol'])
+            ticker = df['Symbol']
+            attempt = 0
+            data = None
+
+            # Try twice
+            while attempt < 2:
+                try:
+                    data = scrape_data(driver, row['Symbol'])
+                    break
+                except Exception as e:
+                    attempt += 1
+                    logging.error(f"Error processing ticker {row['Symbol']}: {e}", exc_info=True)
+                    print(f"Error processing ticker {row['Symbol']}: {e}")
+                    if attempt < 2:
+                        # Restart driver before retrying
+                        logging.info(f"Restarting driver and retrying ticker {ticker}")
+                        driver.quit()
+                        driver = create_driver()
+                    else:
+                        logging.error(f"Ticker {ticker} failed after {attempt} attempts. Skipping.")
+                        print(f"Ticker {ticker} failed after {attempt} attempts. Skipping.")
+
+                        continue
+
             print(f"{row['Symbol']}: {data}, stocks processed: {processed_count}")
             logging.info(f"{row['Symbol']}: {data}, stocks processed: {processed_count}")
             if data:

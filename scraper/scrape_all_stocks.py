@@ -17,6 +17,8 @@ import platform
 
 
 def create_driver():
+    logging.info("create_driver()")
+    print("create_driver()")
     options = Options()
 
     # Avoid detection as a bot
@@ -35,14 +37,9 @@ def create_driver():
 
     downloads_folder = '/Users/eligooch/Downloads'
 
-    # 🛠️ Set Chromium binary path dynamically based on OS
-    if platform.system() == "Darwin":  # macOS
-        options.binary_location = "/Applications/Chromium.app/Contents/MacOS/Chromium"
-    elif platform.system() == "Linux":  # VPS (Linux)
-        options.binary_location = "/usr/bin/chromium-browser"
+    if platform.system() == "Linux":  # VPS (Linux)
+        options.binary_location = "/usr/bin/google-chrome"
         downloads_folder = os.getenv('DOWNLOADS_FOLDER', os.path.expanduser('~/Downloads'))
-    else:
-        raise Exception("Unsupported OS. Install Chromium manually.")
 
     # Configure Chromium to auto-download files without confirmation
     prefs = {
@@ -223,9 +220,12 @@ def scrape_all_stocks(input_file) -> bool:
                 logging.info(f"trying to copy to Excel {input_file}")
                 df.to_excel(f"{input_file}", sheet_name='Stocks', index=False)
                 break
+    except Exception as e:
+        logging.error("Error occurred", exc_info=True)
     finally:
         driver.quit()
         df.to_excel(f"{input_file}", sheet_name='Stocks', index=False)
+        logging.info(f"Updated {input_file} ~ scrape_all_stocks.py")
         return finished
 
 

@@ -11,10 +11,11 @@ def download_nasdaq_list(filename: str):
     :return:
     """
     print("download_nasdaq_list()")
-    # API endpoint
-    api_url = "https://api.nasdaq.com/api/screener/stocks?limit=50&tableonly=true&download=true"
 
-    # Nasdaq often expects certain headers. These mimic a typical browser request.
+    # API endpoint
+    api_url = "https://api.nasdaq.com/api/screener/stocks?limit=10000&tableonly=true&download=true"
+
+    # Keeping it simple bypasses errors for some reason
     headers = {
         "User-Agent": "Mozilla/5.0"
     }
@@ -35,6 +36,44 @@ def download_nasdaq_list(filename: str):
 
     # Create a DataFrame from the rows
     df = pd.DataFrame(rows)
+
+    # Drop the 'url' column if present
+    if "url" in df.columns:
+        df.drop(columns=["url"], inplace=True)
+
+    # Rename columns
+    rename_map = {
+        "symbol": "Symbol",
+        "name": "Name",
+        "lastsale": "Last Sale",
+        "netchange": "Net Change",
+        "pctchange": "% Change",
+        "volume": "Volume",
+        "marketCap": "Market Cap",
+        "country": "Country",
+        "ipoyear": "IPO Year",
+        "industry": "Industry",
+        "sector": "Sector"
+    }
+    df.rename(columns=rename_map, inplace=True)
+
+    # Reorder columns to match your desired sequence
+    desired_order = [
+        "Symbol",
+        "Name",
+        "Last Sale",
+        "Net Change",
+        "% Change",
+        "Market Cap",
+        "Country",
+        "IPO Year",
+        "Volume",
+        "Sector",
+        "Industry",
+    ]
+    # Filter to only columns that exist, in case some are missing
+    existing_cols_in_order = [col for col in desired_order if col in df.columns]
+    df = df[existing_cols_in_order]
 
     # Define output file names
     csv_file = f"{filename}.csv"
